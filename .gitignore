@@ -1,9 +1,9 @@
-target
+target/*
 *.class
 
 #For IDE
-.idea
-*.iml
+/.idea/*
+asset.iml
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
