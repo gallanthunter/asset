@@ -1,5 +1,18 @@
+spring:
+    profiles: development
+server:
+    address: 127.0.0.1
+    port: 8080
+security:
+    user: admin
+    password: admin
 
-db:
-  url:
-  username:
-  password:
+
+spring:
+    profiles: production
+server:
+    address: 127.0.0.1
+    port: 8080
+security:
+    user: admin
+    password: admin
