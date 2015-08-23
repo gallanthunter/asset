@@ -6,7 +6,12 @@ server:
 security:
     user: admin
     password: admin
-
+    role: SUPERUSER
+spring.datasource:
+    url: jdbc:postgres://localhost/test
+    username: asset
+    password: asset@2015
+    driver-class-name: com.postgres.jdbc.Driver
 
 spring:
     profiles: production
@@ -16,3 +21,9 @@ server:
 security:
     user: admin
     password: admin
+    role: SUPERUSER
+spring.datasource:
+    url: jdbc:postgres://localhost/test
+    username: asset
+    password: asset@2015
+    driver-class-name: com.postgres.jdbc.Driver
