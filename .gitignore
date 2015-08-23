@@ -1,9 +1,12 @@
-target/*
+# Java class files
+target/
 *.class
 
 #For IDE
-/.idea/*
-asset.iml
+.idea/
+*.iml
+*.ipr
+*.iws
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

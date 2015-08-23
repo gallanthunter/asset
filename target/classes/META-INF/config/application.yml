@@ -1,5 +1,29 @@
+spring:
+    profiles: development
+server:
+    address: 127.0.0.1
+    port: 8080
+security:
+    user: admin
+    password: admin
+    role: SUPERUSER
+spring.datasource:
+    url: jdbc:postgres://localhost/test
+    username: asset
+    password: asset@2015
+    driver-class-name: com.postgres.jdbc.Driver
 
-db:
-  url:
-  username:
-  password:
+spring:
+    profiles: production
+server:
+    address: 127.0.0.1
+    port: 8080
+security:
+    user: admin
+    password: admin
+    role: SUPERUSER
+spring.datasource:
+    url: jdbc:postgres://localhost/test
+    username: asset
+    password: asset@2015
+    driver-class-name: com.postgres.jdbc.Driver
