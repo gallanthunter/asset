@@ -1,0 +1,10 @@
+spring:
+    datasource:
+        url: jdbc:postgres://localhost/asset
+        username: asset
+        password: asset@2015
+        driver-class-name: com.postgres.jdbc.Driver
+security:
+    user: admin
+    password: admin
+    role: SUPERUSER

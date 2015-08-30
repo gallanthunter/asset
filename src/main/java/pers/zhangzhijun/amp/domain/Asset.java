@@ -1,13 +1,12 @@
 package pers.zhangzhijun.amp.domain;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Zhang Zhijun on 2015/8/22.
  */
+@Entity
+@Table(name = "T_ASSET")
 public class Asset {
 
     @Id
