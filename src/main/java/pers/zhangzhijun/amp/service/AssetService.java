@@ -30,6 +30,8 @@ public class AssetService {
         return assetDTO;
     }
 
+
+
     public Asset covertAssetDTOToAsset(AssetDTO assetDTO) {
         Asset asset = new Asset();
         asset.setAssetId(assetDTO.getAssetId());

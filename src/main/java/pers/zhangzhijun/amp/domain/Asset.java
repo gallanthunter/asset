@@ -1,37 +1,38 @@
 package pers.zhangzhijun.amp.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 /**
  * Created by Zhang Zhijun on 2015/8/22.
  */
 @Entity
-@Table(name = "T_ASSET")
+@Table(name= "T_ASSET")
 public class Asset {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private Long id;
 
-    @Column(name = "assetId")
+    @Size(max = 16)
     private String assetId;
 
-    @Column(name = "name")
+    @Size(max = 64)
     private String name;
 
-    @Column(name = "model")
+    @Size(max = 64)
     private String model;
 
-    @Column(name = "type")
+    @Size(max = 32)
     private String type;
 
+    @Size(max = 16)
     private String status;
 
-    @Column(name = "manufacturer")
+    @Size(max = 64)
     private String manufacturer;
 
-    @Column(name = "description")
+    @Size(max = 256)
     private String description;
 
     public Long getId() {
