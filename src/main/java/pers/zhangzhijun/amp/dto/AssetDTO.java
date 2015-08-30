@@ -1,46 +1,23 @@
-package pers.zhangzhijun.amp.domain;
-
-import javax.persistence.*;
+package pers.zhangzhijun.amp.dto;
 
 /**
- * Created by Zhang Zhijun on 2015/8/22.
+ * Created by ZhangZhijun on 2015/8/30.
  */
-@Entity
-@Table(name = "T_ASSET")
-public class Asset {
+public class AssetDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long id;
-
-    @Column(name = "assetId")
     private String assetId;
 
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "model")
     private String model;
 
-    @Column(name = "type")
     private String type;
 
     private String status;
 
-    @Column(name = "manufacturer")
     private String manufacturer;
 
-    @Column(name = "description")
     private String description;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getAssetId() {
         return assetId;
@@ -83,7 +60,7 @@ public class Asset {
     }
 
     public String getManufacturer() {
-        return manufacturer;
+        return this.manufacturer;
     }
 
     public void setManufacturer(String manufacturer) {
@@ -91,7 +68,7 @@ public class Asset {
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public void setDescription(String description) {
@@ -99,29 +76,13 @@ public class Asset {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Asset asset = (Asset) o;
-
-        return id.equals(asset.id);
-
-    }
-
-    @Override
-    public int hashCode() {
-        return id.hashCode();
-    }
-
-    @Override
     public String toString() {
-        return "Asset{" +
-                "id=" + id +
-                ", assetId='" + assetId + '\'' +
+        return "AssetDTO{" +
+                "assetId='" + assetId + '\'' +
                 ", name='" + name + '\'' +
                 ", model='" + model + '\'' +
                 ", type='" + type + '\'' +
+                ", status='" + status + '\'' +
                 ", manufacturer='" + manufacturer + '\'' +
                 ", description='" + description + '\'' +
                 '}';

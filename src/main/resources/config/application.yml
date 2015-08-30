@@ -1,9 +1,16 @@
 spring:
-    datasource:
-        url: jdbc:postgres://localhost/asset
-        username: asset
-        password: asset@2015
-        driver-class-name: com.postgres.jdbc.Driver
+#   add for postgrsql
+#    datasource:
+#        url: jdbc:postgres://localhost/asset
+#        username: asset
+#        password: asset@2015
+#        driver-class-name: com.postgres.jdbc.Driver
+#    add for mongodb
+    data:
+        mongodb:
+            url: mongodb://localhost:27017/asset
+            host: localhost
+            port: 27017
 security:
     user: admin
     password: admin
