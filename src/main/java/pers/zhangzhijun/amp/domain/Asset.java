@@ -26,6 +26,8 @@ public class Asset {
     @Column(name = "type")
     private String type;
 
+    private String status;
+
     @Column(name = "manufacturer")
     private String manufacturer;
 
@@ -72,6 +74,14 @@ public class Asset {
         this.type = type;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public String getManufacturer() {
         return manufacturer;
     }
@@ -95,26 +105,13 @@ public class Asset {
 
         Asset asset = (Asset) o;
 
-        if (!id.equals(asset.id)) return false;
-        if (assetId != null ? !assetId.equals(asset.assetId) : asset.assetId != null) return false;
-        if (name != null ? !name.equals(asset.name) : asset.name != null) return false;
-        if (model != null ? !model.equals(asset.model) : asset.model != null) return false;
-        if (type != null ? !type.equals(asset.type) : asset.type != null) return false;
-        if (manufacturer != null ? !manufacturer.equals(asset.manufacturer) : asset.manufacturer != null) return false;
-        return !(description != null ? !description.equals(asset.description) : asset.description != null);
+        return id.equals(asset.id);
 
     }
 
     @Override
     public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + (assetId != null ? assetId.hashCode() : 0);
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (model != null ? model.hashCode() : 0);
-        result = 31 * result + (type != null ? type.hashCode() : 0);
-        result = 31 * result + (manufacturer != null ? manufacturer.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        return result;
+        return id.hashCode();
     }
 
     @Override
@@ -125,6 +122,7 @@ public class Asset {
                 ", name='" + name + '\'' +
                 ", model='" + model + '\'' +
                 ", type='" + type + '\'' +
+                ", status='" + status + '\'' +
                 ", manufacturer='" + manufacturer + '\'' +
                 ", description='" + description + '\'' +
                 '}';
