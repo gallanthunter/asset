@@ -4,6 +4,7 @@ package pers.zhangzhijun.amp.dto;
  * Created by ZhangZhijun on 2015/8/30.
  */
 public class AssetDTO {
+    private String id;
 
     private String assetId;
 
@@ -13,11 +14,23 @@ public class AssetDTO {
 
     private String type;
 
+    private String os;
+
+    private String protocol;
+
     private String status;
 
     private String manufacturer;
 
     private String description;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getAssetId() {
         return assetId;
@@ -51,6 +64,22 @@ public class AssetDTO {
         this.type = type;
     }
 
+    public String getOs() {
+        return os;
+    }
+
+    public void setOs(String os) {
+        this.os = os;
+    }
+
+    public String getProtocol() {
+        return protocol;
+    }
+
+    public void setProtocol(String protocol) {
+        this.protocol = protocol;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -78,10 +107,13 @@ public class AssetDTO {
     @Override
     public String toString() {
         return "AssetDTO{" +
-                "assetId='" + assetId + '\'' +
+                "id='" + id + '\'' +
+                ", assetId='" + assetId + '\'' +
                 ", name='" + name + '\'' +
                 ", model='" + model + '\'' +
                 ", type='" + type + '\'' +
+                ", os='" + os + '\'' +
+                ", protocol='" + protocol + '\'' +
                 ", status='" + status + '\'' +
                 ", manufacturer='" + manufacturer + '\'' +
                 ", description='" + description + '\'' +

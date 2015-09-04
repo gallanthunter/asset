@@ -18,7 +18,7 @@ public class AssetService {
     @Autowired
     AssetRepository assetRepository;
 
-    public AssetDTO createAssert(AssetDTO assetDTO) {
+    public AssetDTO createAsset(AssetDTO assetDTO) {
         Asset asset = new Asset();
         if (assetRepository.findByAssetId(assetDTO.getAssetId()) != null){
             logger.debug("the assetid {} already exist!",assetDTO.getAssetId());
@@ -30,7 +30,17 @@ public class AssetService {
         return assetDTO;
     }
 
-
+//    update asset info
+    public AssetDTO updateAsset(AssetDTO assetDTO) {
+        Asset asset = new Asset();
+        if (assetRepository.findByAssetId(assetDTO.getAssetId()) != null) {
+            logger.debug("The assetId can not be changed!");
+            return null;
+        }
+        asset = covertAssetDTOToAsset(assetDTO);
+        assetRepository.save(asset);
+        return assetDTO;
+    }
 
     public Asset covertAssetDTOToAsset(AssetDTO assetDTO) {
         Asset asset = new Asset();

@@ -1,6 +1,7 @@
 package pers.zhangzhijun.amp.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -12,27 +13,48 @@ public class Asset {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Size(max = 8)
+    @Column(name = "id")
     private Long id;
 
     @Size(max = 16)
+    @Column(name = "assetid")
     private String assetId;
 
-    @Size(max = 64)
+    @Size(max = 32)
+    @Column(name = "name")
+    @NotNull
     private String name;
 
-    @Size(max = 64)
+    @Size(max = 32)
+    @Column(name = "model")
+    @NotNull
     private String model;
 
     @Size(max = 32)
+    @Column(name = "type")
+    @NotNull
     private String type;
 
     @Size(max = 16)
+    @Column(name = "os")
+    private String os;
+
+    @Size(max = 32)
+    @Column(name = "protocol")
+    private String protocol;
+
+    @Size(max = 16)
+    @Column(name = "staus")
     private String status;
 
     @Size(max = 64)
+    @Column(name = "manufacturer")
+    @NotNull
     private String manufacturer;
 
     @Size(max = 256)
+    @Column(name = "description")
     private String description;
 
     public Long getId() {
@@ -73,6 +95,22 @@ public class Asset {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getOs() {
+        return os;
+    }
+
+    public void setOs(String os) {
+        this.os = os;
+    }
+
+    public String getProtocol() {
+        return protocol;
+    }
+
+    public void setProtocol(String protocol) {
+        this.protocol = protocol;
     }
 
     public String getStatus() {
@@ -123,6 +161,9 @@ public class Asset {
                 ", name='" + name + '\'' +
                 ", model='" + model + '\'' +
                 ", type='" + type + '\'' +
+                ", os='" + os + '\'' +
+                ", protocol='" + protocol + '\'' +
+                ", status='" + status + '\'' +
                 ", manufacturer='" + manufacturer + '\'' +
                 ", description='" + description + '\'' +
                 '}';

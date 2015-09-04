@@ -1,17 +1,15 @@
 package pers.zhangzhijun.amp.repository;
 
-import org.springframework.data.domain.Page;
 import org.springframework.data.repository.CrudRepository;
 import pers.zhangzhijun.amp.domain.Asset;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 /**
  * Created by Zhang Zhijun on 2015/8/23.
  */
 public interface AssetRepository extends CrudRepository<Asset, Long> {
-    Page<Asset> findAll(Pageable pageable);
+    List<Asset> findAll();
 
     Asset findByAssetId(String assetId);
 

@@ -1,21 +1,52 @@
+banner:
+    charset: UTF-8
 spring:
+    application:
+        name: Asset Management Platform
 #   add for postgrsql
     datasource:
+        name: asset
         url: jdbc:postgres://localhost/asset
         username: asset
         password: asset
-        driver-class-name: com.postgres.jdbc.Driver
-#    add for mongodb
-#    data:
-#        mongodb:
-#            url: mongodb://localhost/asset
-#            host: localhost
-#            port: 27017
-#            database: asset
-#            authentication-database: false
-#            username:
-#            password:
+        driverClassName: org.postgresql.Driver
+        max-active: 100
+        max-idle: 8
+        min-idle: 8
+
+    dao:
+        exceptiontranslation:
+            enabled: true
+
+    jpa:
+        database: postgresql
+        # Show or not log for each sql query
+        show-sql: true
+        # Hibernate ddl auto (create, create-drop, update)
+        hibernate:
+#            ddl-auto: update
+            # Naming strategy
+            naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+        # stripped before adding them to the entity manager)
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+
+    mail:
+        host: smtp.163.com
+        port: 25
+        protocol: smtp
+        username:
+        password:
+        default-encoding: UTF-8
+
+# Add For Security
 security:
     user: admin
     password: admin
     role: SUPERUSER
+
+logging:
+    level.*: DEBUG  #(TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF)
+#    file: run.log
+    #path: /var/log
