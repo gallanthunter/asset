@@ -23,3 +23,6 @@ hs_err_pid*
 
 # static/libs
 libs/
+
+# logs
+*.log
