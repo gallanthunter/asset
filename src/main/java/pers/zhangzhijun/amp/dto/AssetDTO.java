@@ -24,6 +24,9 @@ public class AssetDTO {
 
     private String description;
 
+    public AssetDTO() {
+    }
+
     public String getId() {
         return id;
     }

@@ -5,38 +5,41 @@
     <statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener"/>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <!--<Encoding>UTF-8</Encoding>-->
-        <layout class="ch.qos.logback.classic.PatternLayout">
-            <pattern>
-                %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
-            </pattern>
-        </layout>
+
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>
+                    %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan([%file , %line])  %logger - %msg%n
+                </pattern>
+            </layout>
+        </encoder>
     </appender>
 
-    <!--<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
-        <!--&lt;!&ndash;<Encoding>UTF-8</Encoding>&ndash;&gt;-->
-        <!--<File>run.log</File>-->
-        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
-            <!--<FileNamePattern>-->
-                <!--run.%d{yyyy-MM-dd}.log-->
-            <!--</FileNamePattern>-->
-            <!--<MaxHistory>10</MaxHistory>-->
-        <!--</rollingPolicy>-->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>run.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>
+                run.%d{yyyy-MM-dd}.log
+            </FileNamePattern>
+            <MaxHistory>10</MaxHistory>
+        </rollingPolicy>
 
-        <!--<layout class="ch.qos.logback.classic.PatternLayout">-->
-            <!--<Pattern>-->
-                <!--%d{yyyy-MM-dd HH:mm:ss,SSS} [%thread] %-5level %logger{36} - %msg%n-->
-            <!--</Pattern>-->
-        <!--</layout>-->
-        <!--<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">-->
-            <!--<MaxFileSize>20MB</MaxFileSize>-->
-        <!--</triggeringPolicy>-->
-    <!--</appender>-->
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <Pattern>
+                    %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan([%file , %line])  %logger - %msg%n
+                </Pattern>
+            </layout>
+        </encoder>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>20MB</MaxFileSize>
+        </triggeringPolicy>
+    </appender>
 
     <root>
         <level value="info"/>
         <appender-ref ref="STDOUT"/>
-        <!--<appender-ref ref="FILE"/>-->
+        <appender-ref ref="FILE"/>
     </root>
 
 </configuration>

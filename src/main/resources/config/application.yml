@@ -3,10 +3,10 @@ banner:
 spring:
     application:
         name: Asset Management Platform
-#   add for postgrsql
+
     datasource:
         name: asset
-        url: jdbc:postgres://localhost/asset
+        url: jdbc:postgresql://localhost/asset
         username: asset
         password: asset
         driverClassName: org.postgresql.Driver
@@ -20,17 +20,10 @@ spring:
 
     jpa:
         database: postgresql
-        # Show or not log for each sql query
         show-sql: true
-        # Hibernate ddl auto (create, create-drop, update)
         hibernate:
-#            ddl-auto: update
-            # Naming strategy
             naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
-        # stripped before adding them to the entity manager)
-        properties:
-            hibernate:
-                dialect: org.hibernate.dialect.PostgreSQLDialect
+            dialect: org.hibernate.dialect.PostgreSQLDialect
 
     mail:
         host: smtp.163.com
@@ -40,7 +33,6 @@ spring:
         password:
         default-encoding: UTF-8
 
-# Add For Security
 security:
     user: admin
     password: admin

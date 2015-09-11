@@ -1,5 +1,8 @@
 package pers.zhangzhijun.amp.domain;
 
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -52,6 +55,14 @@ public class Asset {
     @Column(name = "manufacturer")
     @NotNull
     private String manufacturer;
+
+    @Column(name = "createBy")
+    @CreatedBy
+    private String createdBy;
+
+    @Column(name = "createDate")
+    @CreatedDate
+    private Long createdDate;
 
     @Size(max = 256)
     @Column(name = "description")
@@ -127,6 +138,22 @@ public class Asset {
 
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Long getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Long createdDate) {
+        this.createdDate = createdDate;
     }
 
     public String getDescription() {
