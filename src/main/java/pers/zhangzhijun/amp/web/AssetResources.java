@@ -3,6 +3,7 @@ package pers.zhangzhijun.amp.web;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,7 @@ public class AssetResources {
                     method = RequestMethod.POST,
                     headers = MediaType.APPLICATION_JSON_VALUE
                     )
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<AssetDTO> createAsset(AssetDTO assetDTO) {
         createAsset(assetDTO);
         return new ResponseEntity(assetDTO,HttpStatus.OK);

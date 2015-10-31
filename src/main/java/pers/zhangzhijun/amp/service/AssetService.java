@@ -33,7 +33,7 @@ public class AssetService {
 //    update asset info
     public AssetDTO updateAsset(AssetDTO assetDTO) {
         Asset asset = new Asset();
-        if (assetRepository.findByAssetId(assetDTO.getAssetId()) != null) {
+        if (assetRepository.findByAssetId(assetDTO.getId()) != null) {
             logger.debug("The assetId can not be changed!");
             return null;
         }

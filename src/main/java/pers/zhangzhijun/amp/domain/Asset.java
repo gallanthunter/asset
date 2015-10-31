@@ -1,8 +1,5 @@
 package pers.zhangzhijun.amp.domain;
 
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -18,7 +15,7 @@ public class Asset {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Size(max = 8)
     @Column(name = "id")
-    private Long id;
+    private String id;
 
     @Size(max = 16)
     @Column(name = "assetid")
@@ -40,14 +37,6 @@ public class Asset {
     private String type;
 
     @Size(max = 16)
-    @Column(name = "os")
-    private String os;
-
-    @Size(max = 32)
-    @Column(name = "protocol")
-    private String protocol;
-
-    @Size(max = 16)
     @Column(name = "staus")
     private String status;
 
@@ -56,23 +45,15 @@ public class Asset {
     @NotNull
     private String manufacturer;
 
-    @Column(name = "createBy")
-    @CreatedBy
-    private String createdBy;
-
-    @Column(name = "createDate")
-    @CreatedDate
-    private Long createdDate;
-
     @Size(max = 256)
     @Column(name = "description")
     private String description;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -108,21 +89,6 @@ public class Asset {
         this.type = type;
     }
 
-    public String getOs() {
-        return os;
-    }
-
-    public void setOs(String os) {
-        this.os = os;
-    }
-
-    public String getProtocol() {
-        return protocol;
-    }
-
-    public void setProtocol(String protocol) {
-        this.protocol = protocol;
-    }
 
     public String getStatus() {
         return status;
@@ -138,22 +104,6 @@ public class Asset {
 
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public Long getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Long createdDate) {
-        this.createdDate = createdDate;
     }
 
     public String getDescription() {
@@ -188,8 +138,6 @@ public class Asset {
                 ", name='" + name + '\'' +
                 ", model='" + model + '\'' +
                 ", type='" + type + '\'' +
-                ", os='" + os + '\'' +
-                ", protocol='" + protocol + '\'' +
                 ", status='" + status + '\'' +
                 ", manufacturer='" + manufacturer + '\'' +
                 ", description='" + description + '\'' +
