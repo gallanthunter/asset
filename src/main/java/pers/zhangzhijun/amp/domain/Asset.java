@@ -13,7 +13,7 @@ public class Asset {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Size(max = 8)
+    @Size(max = 32)
     @Column(name = "id")
     private String id;
 

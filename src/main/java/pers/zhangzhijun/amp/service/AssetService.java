@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import pers.zhangzhijun.amp.domain.Asset;
 import pers.zhangzhijun.amp.dto.AssetDTO;
 import pers.zhangzhijun.amp.repository.AssetRepository;
+import pers.zhangzhijun.amp.util.GeneratorUUID;
 
 /**
  * Created by ZhangZhijun on 2015/8/30.
@@ -20,9 +21,12 @@ public class AssetService {
 
     public AssetDTO createAsset(AssetDTO assetDTO) {
         Asset asset = new Asset();
-        if (assetRepository.findByAssetId(assetDTO.getAssetId()) != null){
-            logger.debug("the assetid {} already exist!",assetDTO.getAssetId());
-            return null;
+//        if (assetRepository.findByAssetId(assetDTO.getAssetId()) != null){
+//            logger.debug("the assetid {} already exist!",assetDTO.getAssetId());
+//            return null;
+//        }
+        if(assetDTO.getAssetId() == null) {
+            assetDTO.setAssetId(GeneratorUUID.getUUID());
         }
         asset = covertAssetDTOToAsset(assetDTO);
         assetRepository.save(asset);
@@ -33,10 +37,10 @@ public class AssetService {
 //    update asset info
     public AssetDTO updateAsset(AssetDTO assetDTO) {
         Asset asset = new Asset();
-        if (assetRepository.findByAssetId(assetDTO.getId()) != null) {
-            logger.debug("The assetId can not be changed!");
-            return null;
-        }
+//        if (assetRepository.findByAssetId(assetDTO.getId()) != null) {
+//            logger.debug("The assetId can not be changed!");
+//            return null;
+//        }
         asset = covertAssetDTOToAsset(assetDTO);
         assetRepository.save(asset);
         return assetDTO;
