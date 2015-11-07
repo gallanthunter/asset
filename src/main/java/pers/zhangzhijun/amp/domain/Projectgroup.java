@@ -19,12 +19,12 @@ public class Projectgroup {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "projectgroup_name")
     @Size(max = 32)
     @NotNull
     private String name;
 
-    @Column(name = "description")
+    @Column(name = "projectgroup_description")
     @Size(max = 256)
     private String description;
 

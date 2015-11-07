@@ -23,6 +23,6 @@ public class AssetResources {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<AssetDTO> createAsset(AssetDTO assetDTO) {
         createAsset(assetDTO);
-        return new ResponseEntity(assetDTO,HttpStatus.OK);
+        return new ResponseEntity<AssetDTO>(assetDTO,HttpStatus.OK);
     }
 }

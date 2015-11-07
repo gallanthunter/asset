@@ -1,38 +1,22 @@
-package pers.zhangzhijun.amp.domain;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+package pers.zhangzhijun.amp.dto;
 
 /**
- * ClassName: pers.zhangzhijun.amp.domain
+ * ClassName: pers.zhangzhijun.amp.dto
  * Function :
  * Author   : ZhangZhijun
- * Date     : 22:34
+ * Date     : 20:55
  * Since    : v1.0.0
  */
-@Entity
-@Table(name = "T_TYPE")
-public class Type {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long id;
-
-    @Column(name = "type_name")
-    @Size(max = 32)
-    @NotNull
+public class ProtocolDTO {
+    private String id;
     private String name;
-
-    @Column(name = "type_description")
-    @Size(max = 256)
     private String description;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -54,8 +38,8 @@ public class Type {
 
     @Override
     public String toString() {
-        return "Type{" +
-                "id=" + id +
+        return "ProtocolDTO{" +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 '}';

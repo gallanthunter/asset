@@ -1,5 +1,6 @@
 package pers.zhangzhijun.amp.repository;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import pers.zhangzhijun.amp.domain.Subscription;
 
@@ -13,10 +14,11 @@ import java.util.List;
  * Since    : v1.0.0
  */
 public interface SubscriptionRepository extends CrudRepository<Subscription, Long> {
-    Subscription findById(String id);
 
+    @Query("SELECT a from Asset a, User u, Subscription s where a.asset_id = s.aid and u.id = s.sid and s.aid = ?1")
     Subscription findByAid(String aid);
 
+    @Query("select a from Asset a, User u, Subscription s where a.asset_id = s.aid and u.id = s.sid and s.sid = ?1")
     List<Subscription> findBySid(String sid);
 
     List<Subscription> findAll();

@@ -19,12 +19,12 @@ public class Subscription {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "aid")
+    @Column(name = "asset_id")
     @Size(max = 32)
     @NotNull
     private String aid;
 
-    @Column(name = "sid")
+    @Column(name = "user_id")
     @Size(max = 32)
     @NotNull
     private String sid;

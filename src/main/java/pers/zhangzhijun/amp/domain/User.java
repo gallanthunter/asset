@@ -17,34 +17,34 @@ public class User {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "uid")
+    @Column(name = "user_id")
     @Size(max = 8)
     @NotNull
     private String uid;
 
-    @Column(name = "name")
+    @Column(name = "user_name")
     @Size(max = 32)
     @NotNull
     private String username;
 
-    @Column(name = "password")
+    @Column(name = "user_password")
     @Size(min = 8,max = 256)
     @NotNull
     private String password;
 
     @Email
-    @Column(name = "email")
+    @Column(name = "user_email")
     @Size(max = 64)
     @NotNull
     private String email;
 
-    @Column(name = "roles")
-    private String roles;
+    @Column(name = "user_role_id")
+    private String roleId;
 
-    @Column(name = "projectgroup")
+    @Column(name = "user_projectgroup_id")
     @Size(max = 32)
     @NotNull
-    private String projectGroup;
+    private String projectGroupId;
 
     public User() {
     }
@@ -89,20 +89,20 @@ public class User {
         this.email = email;
     }
 
-    public String getRoles() {
-        return roles;
+    public String getRoleId() {
+        return roleId;
     }
 
-    public void setRoles(String roles) {
-        this.roles = roles;
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
     }
 
-    public String getProjectGroup() {
-        return projectGroup;
+    public String getProjectGroupId() {
+        return projectGroupId;
     }
 
-    public void setProjectGroup(String projectGroup) {
-        this.projectGroup = projectGroup;
+    public void setProjectGroupId(String projectGroupId) {
+        this.projectGroupId = projectGroupId;
     }
 
     @Override
@@ -111,10 +111,9 @@ public class User {
                 "id=" + id +
                 ", uid='" + uid + '\'' +
                 ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", roles='" + roles + '\'' +
-                ", projectGroup='" + projectGroup + '\'' +
+                ", roleId='" + roleId + '\'' +
+                ", projectGroupId='" + projectGroupId + '\'' +
                 '}';
     }
 }

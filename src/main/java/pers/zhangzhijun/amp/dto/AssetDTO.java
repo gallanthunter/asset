@@ -12,15 +12,13 @@ public class AssetDTO {
 
     private String model;
 
-    private String type;
+    private String typeId;
 
-    private String os;
-
-    private String protocol;
+    private String protocolId;
 
     private String status;
 
-    private String manufacturer;
+    private String manufacturerId;
 
     private String description;
 
@@ -59,28 +57,20 @@ public class AssetDTO {
         this.model = model;
     }
 
-    public String getType() {
-        return type;
+    public String getTypeId() {
+        return typeId;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTypeId(String typeId) {
+        this.typeId = typeId;
     }
 
-    public String getOs() {
-        return os;
+    public String getProtocolId() {
+        return protocolId;
     }
 
-    public void setOs(String os) {
-        this.os = os;
-    }
-
-    public String getProtocol() {
-        return protocol;
-    }
-
-    public void setProtocol(String protocol) {
-        this.protocol = protocol;
+    public void setProtocolId(String protocolId) {
+        this.protocolId = protocolId;
     }
 
     public String getStatus() {
@@ -91,12 +81,12 @@ public class AssetDTO {
         this.status = status;
     }
 
-    public String getManufacturer() {
-        return this.manufacturer;
+    public String getManufacturerId() {
+        return manufacturerId;
     }
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
+    public void setManufacturerId(String manufacturerId) {
+        this.manufacturerId = manufacturerId;
     }
 
     public String getDescription() {
@@ -114,11 +104,10 @@ public class AssetDTO {
                 ", assetId='" + assetId + '\'' +
                 ", name='" + name + '\'' +
                 ", model='" + model + '\'' +
-                ", type='" + type + '\'' +
-                ", os='" + os + '\'' +
-                ", protocol='" + protocol + '\'' +
+                ", typeId='" + typeId + '\'' +
+                ", protocolId='" + protocolId + '\'' +
                 ", status='" + status + '\'' +
-                ", manufacturer='" + manufacturer + '\'' +
+                ", manufacturerId='" + manufacturerId + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }

@@ -27,7 +27,7 @@ public class Log {
     @NotNull
     private String operator;
 
-    @Column(name = "content")
+    @Column(name = "log_content")
     @Size(max = 256)
     @NotNull
     private String content;

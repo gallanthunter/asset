@@ -18,35 +18,40 @@ public class Asset {
     private String id;
 
     @Size(max = 16)
-    @Column(name = "assetid")
+    @Column(name = "asset_id")
     private String assetId;
 
     @Size(max = 32)
-    @Column(name = "name")
+    @Column(name = "asset_name")
     @NotNull
     private String name;
 
     @Size(max = 32)
-    @Column(name = "model")
+    @Column(name = "asset_model")
     @NotNull
     private String model;
 
     @Size(max = 32)
-    @Column(name = "type")
+    @Column(name = "asset_type_id")
     @NotNull
-    private String type;
+    private String typeId;
+
+    @Size(max = 32)
+    @Column(name = "asset_protocol_id")
+    @NotNull
+    private String protocolId;
 
     @Size(max = 16)
-    @Column(name = "staus")
+    @Column(name = "asset_staus")
     private String status;
 
     @Size(max = 64)
-    @Column(name = "manufacturer")
+    @Column(name = "asset_manufacturer_id")
     @NotNull
-    private String manufacturer;
+    private String manufacturerId;
 
     @Size(max = 256)
-    @Column(name = "description")
+    @Column(name = "asset_description")
     private String description;
 
     public String getId() {
@@ -81,14 +86,21 @@ public class Asset {
         this.model = model;
     }
 
-    public String getType() {
-        return type;
+    public String getTypeId() {
+        return typeId;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTypeId(String typeId) {
+        this.typeId = typeId;
     }
 
+    public String getProtocolId() {
+        return protocolId;
+    }
+
+    public void setProtocolId(String protocolId) {
+        this.protocolId = protocolId;
+    }
 
     public String getStatus() {
         return status;
@@ -98,12 +110,12 @@ public class Asset {
         this.status = status;
     }
 
-    public String getManufacturer() {
-        return manufacturer;
+    public String getManufacturerId() {
+        return manufacturerId;
     }
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
+    public void setManufacturerId(String manufacturerId) {
+        this.manufacturerId = manufacturerId;
     }
 
     public String getDescription() {
@@ -133,13 +145,14 @@ public class Asset {
     @Override
     public String toString() {
         return "Asset{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", assetId='" + assetId + '\'' +
                 ", name='" + name + '\'' +
                 ", model='" + model + '\'' +
-                ", type='" + type + '\'' +
+                ", typeId='" + typeId + '\'' +
+                ", protocolId='" + protocolId + '\'' +
                 ", status='" + status + '\'' +
-                ", manufacturer='" + manufacturer + '\'' +
+                ", manufacturerId='" + manufacturerId + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }

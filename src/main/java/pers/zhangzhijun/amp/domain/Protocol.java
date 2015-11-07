@@ -8,31 +8,32 @@ import javax.validation.constraints.Size;
  * ClassName: pers.zhangzhijun.amp.domain
  * Function :
  * Author   : ZhangZhijun
- * Date     : 22:34
+ * Date     : 20:53
  * Since    : v1.0.0
  */
 @Entity
-@Table(name = "T_TYPE")
-public class Type {
+@Table(name= "T_PROTOCOL")
+public class Protocol {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long id;
-
-    @Column(name = "type_name")
     @Size(max = 32)
+    @Column(name = "id")
+    private String id;
+
+    @Size(max = 32)
+    @Column(name = "protocol_name")
     @NotNull
     private String name;
 
-    @Column(name = "type_description")
     @Size(max = 256)
+    @Column(name = "protocol_description")
     private String description;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -54,8 +55,8 @@ public class Type {
 
     @Override
     public String toString() {
-        return "Type{" +
-                "id=" + id +
+        return "Protocol{" +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 '}';
