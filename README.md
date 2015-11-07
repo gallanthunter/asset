@@ -1,5 +1,10 @@
-# asset
-Asset Management Platform
+#1. Overview
+    Asset Management Platform
 
-#Database design
+#2. Documenation
+
+#2. Usage
+
+#3. License
+    The MIT License (MIT)
 
