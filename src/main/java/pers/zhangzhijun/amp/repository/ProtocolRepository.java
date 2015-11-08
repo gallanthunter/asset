@@ -16,7 +16,7 @@ public interface ProtocolRepository extends CrudRepository<Protocol, Long> {
 
     Protocol findById();
 
-    List<Protocol> findByName();
+    List<Protocol> findByName(String name);
 
     List<Protocol> findAll();
 }

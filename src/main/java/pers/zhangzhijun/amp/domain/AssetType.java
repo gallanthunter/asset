@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "T_TYPE")
-public class Type {
+public class AssetType {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")

@@ -37,10 +37,10 @@ public class AssetService {
 //    update asset info
     public AssetDTO updateAsset(AssetDTO assetDTO) {
         Asset asset = new Asset();
-//        if (assetRepository.findByAssetId(assetDTO.getId()) != null) {
-//            logger.debug("The assetId can not be changed!");
-//            return null;
-//        }
+        if (assetRepository.findByAssetId(assetDTO.getId()) != null) {
+            logger.debug("The assetId cannot be changed!");
+            return null;
+        }
         asset = covertAssetDTOToAsset(assetDTO);
         assetRepository.save(asset);
         return assetDTO;
@@ -51,9 +51,9 @@ public class AssetService {
         asset.setAssetId(assetDTO.getAssetId());
         asset.setName(assetDTO.getName());
         asset.setModel(assetDTO.getModel());
-        asset.setType(assetDTO.getType());
+        asset.setTypeId(assetDTO.getTypeId());
         asset.setStatus(assetDTO.getStatus());
-        asset.setManufacturer(assetDTO.getManufacturer());
+        asset.setManufacturerId(assetDTO.getManufacturerId());
         asset.setDescription(assetDTO.getDescription());
         return asset;
     }
@@ -63,9 +63,9 @@ public class AssetService {
         assetDTO.setAssetId(asset.getAssetId());
         assetDTO.setName(asset.getName());
         assetDTO.setModel(asset.getModel());
-        assetDTO.setType(asset.getType());
+        assetDTO.setTypeId(asset.getTypeId());
         assetDTO.setStatus(asset.getStatus());
-        assetDTO.setManufacturer(asset.getManufacturer());
+        assetDTO.setManufacturerId(asset.getManufacturerId());
         assetDTO.setDescription(asset.getDescription());
 
         return assetDTO;

@@ -2,7 +2,7 @@ package pers.zhangzhijun.amp.repository;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import pers.zhangzhijun.amp.domain.Type;
+import pers.zhangzhijun.amp.domain.AssetType;
 
 import java.util.List;
 
@@ -13,10 +13,10 @@ import java.util.List;
  * Date     : 22:37
  * Since    : v1.0.0
  */
-public interface TypeRepository extends CrudRepository<Type, Long>{
+public interface AssetTypeRepository extends CrudRepository<AssetType, Long>{
 
     @Query("SELECT a from Asset a, Type t where a.asset_type_id = t.id and t.name = ?1")
-    Type findByName(String name);
+    AssetType findByName(String name);
 
-    List<Type> findAll();
+    List<AssetType> findAll();
 }

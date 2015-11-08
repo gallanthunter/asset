@@ -7,18 +7,18 @@ package pers.zhangzhijun.amp.dto;
  * Date     : 22:36
  * Since    : v1.0.0
  */
-public class TypeDTO {
-    private String id;
+public class AssetTypeDTO {
+    private Long id;
 
     private String name;
 
     private String description;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
