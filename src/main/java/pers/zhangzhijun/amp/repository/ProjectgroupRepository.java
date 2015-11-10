@@ -15,7 +15,8 @@ import java.util.List;
  */
 public interface ProjectgroupRepository extends CrudRepository<Projectgroup,Long> {
     Projectgroup findById(String id);
-    @Query("select * from t_projectgroup p where p.name = ?1")
+
+    @Query("select p from Projectgroup p where p.name = ?1")
     Projectgroup findByName(String name);
 
     List<Projectgroup> findAll();

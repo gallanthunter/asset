@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-cn" ng-app>
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="descritpion" content="Asset Management Platform">
+    <title>AMP</title>
+    <link rel="stylesheet" type="text/css" href="libs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="libs/bootstrap/dist/css/bootstrap-theme.min.css">
 </head>
 <body>
-    <h1>This is index page!</h1>
+<div class="container-fluid">
+    <div class="row">
+        <ng-include>"views/header.html"</ng-include>
+    </div>
+
+    <div class="row">
+        {{'Body'}}
+    </div>
+
+    <div class="row">
+        <ng-include>"views/footer.html"</ng-include>
+    </div>
+</div>
+<script type="text/javascript" src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="libs/angular/angular.min.js"></script>
+<script type="text/javascript" src="libs/angular-route/angular-route.min.js"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@ package pers.zhangzhijun.amp.dto;
  * Date     : 22:28
  * Since    : v1.0.0
  */
-public class ManufactureDTO {
+public class ManufacturerDTO {
     private Long id;
 
     private String name;

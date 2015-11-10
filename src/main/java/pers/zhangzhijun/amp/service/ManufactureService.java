@@ -4,9 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pers.zhangzhijun.amp.domain.Manufacture;
-import pers.zhangzhijun.amp.dto.ManufactureDTO;
-import pers.zhangzhijun.amp.repository.ManufactureRepository;
+import pers.zhangzhijun.amp.domain.Manufacturer;
+import pers.zhangzhijun.amp.dto.ManufacturerDTO;
+import pers.zhangzhijun.amp.repository.ManufacturerRepository;
 
 /**
  * ClassName: pers.zhangzhijun.amp.service
@@ -20,58 +20,58 @@ public class ManufactureService {
     private Logger logger = LoggerFactory.getLogger(ManufactureService.class);
 
     @Autowired
-    ManufactureRepository manufactureRepository;
+    ManufacturerRepository manufacturerRepository;
 
-    public void createManufacture(ManufactureDTO manufactureDTO){
-        Manufacture manufacture;
-        if (manufactureDTO.getName() == null){
-            logger.error("Manufacture name cannot be null!");
+    public void createManufacture(ManufacturerDTO manufacturerDTO){
+        Manufacturer manufacturer;
+        if (manufacturerDTO.getName() == null){
+            logger.error("Manufacturer name cannot be null!");
         }
-        manufacture = convertManufactureDTOToManufacturet(manufactureDTO);
-        manufactureRepository.save(manufacture);
+        manufacturer = convertManufacturerDTOToManufacturet(manufacturerDTO);
+        manufacturerRepository.save(manufacturer);
     }
 
-    public ManufactureDTO queryManufacture(String name) {
+    public ManufacturerDTO queryManufacture(String name) {
         if (name == null) {
-            logger.error("Manufacture name cannot be null!");
+            logger.error("Manufacturer name cannot be null!");
         }
-        Manufacture manufacture = manufactureRepository.findByName(name);
-        return convertManufactureToManufacturetDTO(manufacture);
+        Manufacturer manufacturer = manufacturerRepository.findByName(name);
+        return convertManufactureToManufacturetDTO(manufacturer);
     }
 
-    public void updateManufacture(ManufactureDTO manufactureDTO){
-        Manufacture manufacture;
-        if (manufactureDTO.getId() == null){
-            logger.error("A manufacture must be chosed!");
+    public void updateManufacture(ManufacturerDTO manufacturerDTO){
+        Manufacturer manufacturer;
+        if (manufacturerDTO.getId() == null){
+            logger.error("A manufacturer must be chosed!");
         }
-        manufacture = convertManufactureDTOToManufacturet(manufactureDTO);
-        manufactureRepository.save(manufacture);
+        manufacturer = convertManufacturerDTOToManufacturet(manufacturerDTO);
+        manufacturerRepository.save(manufacturer);
     }
 
-    public void deleteManufacture(ManufactureDTO manufactureDTO){
-        Manufacture manufacture;
-        if (manufactureDTO.getId() == null){
-            logger.error("A manufacture must be chosed!");
+    public void deleteManufacture(ManufacturerDTO manufacturerDTO){
+        Manufacturer manufacturer;
+        if (manufacturerDTO.getId() == null){
+            logger.error("A manufacturer must be chosed!");
         }
-        manufacture = convertManufactureDTOToManufacturet(manufactureDTO);
-        manufactureRepository.delete(manufacture);
+        manufacturer = convertManufacturerDTOToManufacturet(manufacturerDTO);
+        manufacturerRepository.delete(manufacturer);
     }
 
-    public Manufacture convertManufactureDTOToManufacturet(ManufactureDTO manufactureDTO) {
-        Manufacture manufacture = new Manufacture();
-        manufacture.setId(manufactureDTO.getId());
-        manufacture.setName(manufactureDTO.getName());
-        manufacture.setDescription(manufactureDTO.getDescription());
+    public Manufacturer convertManufacturerDTOToManufacturet(ManufacturerDTO manufacturerDTO) {
+        Manufacturer manufacturer = new Manufacturer();
+        manufacturer.setId(manufacturerDTO.getId());
+        manufacturer.setName(manufacturerDTO.getName());
+        manufacturer.setDescription(manufacturerDTO.getDescription());
 
-        return manufacture;
+        return manufacturer;
     }
 
-    public ManufactureDTO convertManufactureToManufacturetDTO(Manufacture manufacture) {
-        ManufactureDTO manufactureDTO = new ManufactureDTO();
-        manufactureDTO.setId(manufacture.getId());
-        manufactureDTO.setName(manufacture.getName());
-        manufactureDTO.setDescription(manufacture.getDescription());
+    public ManufacturerDTO convertManufactureToManufacturetDTO(Manufacturer manufacturer) {
+        ManufacturerDTO manufacturerDTO = new ManufacturerDTO();
+        manufacturerDTO.setId(manufacturer.getId());
+        manufacturerDTO.setName(manufacturer.getName());
+        manufacturerDTO.setDescription(manufacturer.getDescription());
 
-        return manufactureDTO;
+        return manufacturerDTO;
     }
 }

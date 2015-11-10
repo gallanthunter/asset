@@ -15,10 +15,10 @@ import java.util.List;
  */
 public interface SubscriptionRepository extends CrudRepository<Subscription, Long> {
 
-    @Query("SELECT a from Asset a, User u, Subscription s where a.asset_id = s.aid and u.id = s.sid and s.aid = ?1")
+    @Query("SELECT a from Asset a, User u, Subscription s where a.assetId = s.aid and u.id = s.sid and s.aid = ?1")
     Subscription findByAid(String aid);
 
-    @Query("select a from Asset a, User u, Subscription s where a.asset_id = s.aid and u.id = s.sid and s.sid = ?1")
+    @Query("select a from Asset a, User u, Subscription s where a.assetId = s.aid and u.id = s.sid and s.sid = ?1")
     List<Subscription> findBySid(String sid);
 
     List<Subscription> findAll();

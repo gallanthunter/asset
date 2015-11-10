@@ -12,19 +12,19 @@ import javax.validation.constraints.Size;
  * Since    : v1.0.0
  */
 @Entity
-@Table(name = "T_MANUFACTURE")
-public class Manufacture {
+@Table(name = "T_MANUFACTURER")
+public class Manufacturer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "manufacture_name")
+    @Column(name = "manufacturer_name")
     @Size(max = 32)
     @NotNull
     private String name;
 
-    @Column(name = "manufacture_description")
+    @Column(name = "manufacturer_description")
     @Size(max = 256)
     private String description;
 

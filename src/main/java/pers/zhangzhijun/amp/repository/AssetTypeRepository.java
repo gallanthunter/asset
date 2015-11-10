@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface AssetTypeRepository extends CrudRepository<AssetType, Long>{
 
-    @Query("SELECT a from Asset a, Type t where a.asset_type_id = t.id and t.name = ?1")
+    @Query("SELECT t from AssetType t where t.name = ?1")
     AssetType findByName(String name);
 
     List<AssetType> findAll();

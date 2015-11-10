@@ -1,0 +1,16 @@
+{
+  "name": "Asset",
+  "version": "0.0.1",
+  "description": "Asset Management Platform",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:gallanthunter/asset.git"
+  },
+  "author": "gallanthunter",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "gitHead": "git head",
+  "devDependencies": {
+    "bower": "latest"
+  }
+}

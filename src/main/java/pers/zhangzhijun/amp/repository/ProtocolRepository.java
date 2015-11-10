@@ -1,5 +1,6 @@
 package pers.zhangzhijun.amp.repository;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import pers.zhangzhijun.amp.domain.Protocol;
 
@@ -14,9 +15,10 @@ import java.util.List;
  */
 public interface ProtocolRepository extends CrudRepository<Protocol, Long> {
 
-    Protocol findById();
+    Protocol findById(String id);
 
-    List<Protocol> findByName(String name);
+    @Query("select p from Protocol p where p.name = ?1")
+    Protocol findByName(String name);
 
     List<Protocol> findAll();
 }

@@ -1,0 +1,23 @@
+{
+  "name": "amp",
+  "version": "0.0.1",
+  "homepage": "https://github.com/gallanthunter/asset",
+  "authors": [
+    "gallanthunter <gallanthunter@163.com>"
+  ],
+  "description": "asset management platform",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-route": "~1.4.7",
+    "bootstrap": "~3.3.5"
+  }
+}
