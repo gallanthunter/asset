@@ -8,7 +8,6 @@
   "description": "asset management platform",
   "license": "MIT",
   "ignore": [
-    "**/.*",
     "node_modules",
     "bower_components",
     "/libs",
