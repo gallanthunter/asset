@@ -14,17 +14,17 @@ import pers.zhangzhijun.amp.util.GeneratorUUID;
  */
 @Service
 public class AssetService {
-    public static final Logger logger = LoggerFactory.getLogger(AssetService.class);
+    private Logger logger = LoggerFactory.getLogger(AssetService.class);
 
     @Autowired
     AssetRepository assetRepository;
 
     public AssetDTO createAsset(AssetDTO assetDTO) {
         Asset asset = new Asset();
-//        if (assetRepository.findByAssetId(assetDTO.getAssetId()) != null){
-//            logger.debug("the assetid {} already exist!",assetDTO.getAssetId());
-//            return null;
-//        }
+        if (assetRepository.findByAssetId(assetDTO.getAssetId()) != null){
+            logger.debug("the assetid {} already exist!",assetDTO.getAssetId());
+            return null;
+        }
         if(assetDTO.getAssetId() == null) {
             assetDTO.setAssetId(GeneratorUUID.getUUID());
         }

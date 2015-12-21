@@ -18,6 +18,8 @@
     "angular": "~1.4.7",
     "angular-route": "~1.4.7",
     "bootstrap": "~3.3.5",
-    "angular-chart.js": "~0.8.8"
+    "angular-chart.js": "~0.8.8",
+    "angular-ui-router": "~0.2.15",
+    "angular-ui-utils": "~3.0.0"
   }
 }
