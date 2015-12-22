@@ -1,23 +1,30 @@
 /**
  * Created by ZhangZhijun on 2015/8/30.
  */
-angular.module('app',[
-    'ngRoute'
-])
-    .config(function($routeProvider){
-        $routeProvider
-        .when('/',{
-            templateUrl:'',
-            controller:''
-        })
-        .when('/login',{
+var app = angular.module('app', [
+        'ui.router'
+    ])
+    .config(function ($stateProvider, $urlRouterProvider) {
 
-        })
-        .when('/asset/',{
+        $stateProvider
+            .state('index', {
+                url: '/',
+                templateUrl: 'index.html',
+                controller: 'indexController'
+            })
+            .state('index.list', {
+                url: '/asset/list',
+                templateUrl: '/views/assetList.html'
+            })
+            .state('index.statistics', {
+                url: '/asset/statistics',
+                templateUrl: 'views/statistics/html'
+            })
+            .state('index.about', {
+                url: '/about.html',
+                templateUrl: 'vies/about.html'
+            });
 
-        })
-        .otherwise({
-
-        })
-    })
-;
+        $urlRouterProvider
+            .otherwise('index');
+    });
