@@ -7,7 +7,11 @@ import org.springframework.stereotype.Service;
 import pers.zhangzhijun.amp.domain.Asset;
 import pers.zhangzhijun.amp.dto.AssetDTO;
 import pers.zhangzhijun.amp.repository.AssetRepository;
+import pers.zhangzhijun.amp.repository.SubscriptionRepository;
 import pers.zhangzhijun.amp.util.GeneratorUUID;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ZhangZhijun on 2015/8/30.
@@ -19,11 +23,13 @@ public class AssetService {
     @Autowired
     AssetRepository assetRepository;
 
-    public AssetDTO createAsset(AssetDTO assetDTO) {
+    @Autowired
+    SubscriptionRepository subscriptionRepository;
+
+    public void createAsset(AssetDTO assetDTO) {
         Asset asset = new Asset();
         if (assetRepository.findByAssetId(assetDTO.getAssetId()) != null){
             logger.debug("the assetid {} already exist!",assetDTO.getAssetId());
-            return null;
         }
         if(assetDTO.getAssetId() == null) {
             assetDTO.setAssetId(GeneratorUUID.getUUID());
@@ -31,19 +37,123 @@ public class AssetService {
         asset = covertAssetDTOToAsset(assetDTO);
         assetRepository.save(asset);
         logger.debug("create asset: {} successful!",assetDTO.toString());
-        return assetDTO;
     }
 
-//    update asset info
-    public AssetDTO updateAsset(AssetDTO assetDTO) {
+    public void updateAsset(AssetDTO assetDTO) {
         Asset asset = new Asset();
         if (assetRepository.findByAssetId(assetDTO.getId()) != null) {
             logger.debug("The assetId cannot be changed!");
-            return null;
         }
         asset = covertAssetDTOToAsset(assetDTO);
         assetRepository.save(asset);
-        return assetDTO;
+        logger.debug("update asset: {} successful!",assetDTO.toString());
+    }
+
+    public List<AssetDTO> getAllAsset(){
+        List<Asset> assetList = assetRepository.findAll();
+        List<AssetDTO> assetDTOList = new ArrayList<AssetDTO>();
+        for (Asset asset: assetList){
+            assetDTOList.add(convertAssetToAssetDTO(asset));
+        }
+
+        return assetDTOList;
+    }
+
+    public List<AssetDTO> getAssetByAssetId(String assetId){
+        List<Asset> assetList = assetRepository.findByName(assetId);
+        List<AssetDTO> assetDTOList = new ArrayList<AssetDTO>();
+        for (Asset asset: assetList){
+            assetDTOList.add(convertAssetToAssetDTO(asset));
+        }
+
+        return assetDTOList;
+    }
+
+    public List<AssetDTO> getAssetByName(String name){
+        List<Asset> assetList = assetRepository.findByName(name);
+        List<AssetDTO> assetDTOList = new ArrayList<AssetDTO>();
+        for (Asset asset: assetList){
+            assetDTOList.add(convertAssetToAssetDTO(asset));
+        }
+
+        return assetDTOList;
+    }
+
+    public List<AssetDTO> getAssetByModel(String Model){
+        List<Asset> assetList = assetRepository.findByName(Model);
+        List<AssetDTO> assetDTOList = new ArrayList<AssetDTO>();
+        for (Asset asset: assetList){
+            assetDTOList.add(convertAssetToAssetDTO(asset));
+        }
+
+        return assetDTOList;
+    }
+
+    public List<AssetDTO> getAssetByType(String type){
+        List<Asset> assetList = assetRepository.findByName(type);
+        List<AssetDTO> assetDTOList = new ArrayList<AssetDTO>();
+        for (Asset asset: assetList){
+            assetDTOList.add(convertAssetToAssetDTO(asset));
+        }
+
+        return assetDTOList;
+    }
+
+    public List<AssetDTO> getAssetByProtocol(String protocol){
+        List<Asset> assetList = assetRepository.findByName(protocol);
+        List<AssetDTO> assetDTOList = new ArrayList<AssetDTO>();
+        for (Asset asset: assetList){
+            assetDTOList.add(convertAssetToAssetDTO(asset));
+        }
+
+        return assetDTOList;
+    }
+
+    public List<AssetDTO> getAssetByStatus(String status){
+        List<Asset> assetList = assetRepository.findByName(status);
+        List<AssetDTO> assetDTOList = new ArrayList<AssetDTO>();
+        for (Asset asset: assetList){
+            assetDTOList.add(convertAssetToAssetDTO(asset));
+        }
+
+        return assetDTOList;
+    }
+
+    public List<AssetDTO> getAssetByManufacturer(String manufacturer){
+        List<Asset> assetList = assetRepository.findByName(manufacturer);
+        List<AssetDTO> assetDTOList = new ArrayList<AssetDTO>();
+        for (Asset asset: assetList){
+            assetDTOList.add(convertAssetToAssetDTO(asset));
+        }
+
+        return assetDTOList;
+    }
+
+    public List<AssetDTO> getAssetByNameAndModelAndTypeAndProtocolAndManufacturer(String paras){
+        List<Asset> assetList = assetRepository.findByName(paras);
+        List<AssetDTO> assetDTOList = new ArrayList<AssetDTO>();
+        for (Asset asset: assetList){
+            assetDTOList.add(convertAssetToAssetDTO(asset));
+        }
+
+        return assetDTOList;
+    }
+
+    public void deleteAsset(AssetDTO assetDTO){
+        Asset asset = new Asset();
+
+        asset = assetRepository.findByAssetId(assetDTO.getAssetId());
+
+        if (asset == null) {
+            logger.debug("Asset {} not exist!", assetDTO.toString());
+        }
+
+        if (subscriptionRepository.findByAid(assetDTO.getAssetId()) != null) {
+            logger.debug("Asset {} is associated with User!",assetDTO.toString());
+        }
+
+        assetRepository.delete(asset);
+        logger.debug("Delete asset {} successfully!",asset.toString());
     }
 
     public Asset covertAssetDTOToAsset(AssetDTO assetDTO) {

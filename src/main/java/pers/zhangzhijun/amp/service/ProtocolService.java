@@ -31,7 +31,7 @@ public class ProtocolService {
         protocolRepository.save(protocol);
     }
 
-    public ProtocolDTO queryProtocol(String name) {
+    public ProtocolDTO getProtocol(String name) {
         if (name == null) {
             logger.error("Protocol name cannot be null!");
         }

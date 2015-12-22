@@ -10,8 +10,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import pers.zhangzhijun.amp.login.LoginSuccessHandler;
-import pers.zhangzhijun.amp.repository.TokenRepository;
-import pers.zhangzhijun.amp.service.UserService;
 
 /**
  * Created by Zhang Zhijun on 2015/8/23.
@@ -21,8 +19,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private Logger logger = LoggerFactory.getLogger(SecurityConfiguration.class);
 
-    @Autowired
-    TokenRepository tokenRepository;
+    //@Autowired
+    //TokenRepository tokenRepository;
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -54,12 +52,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/")
                 .permitAll()
                 .invalidateHttpSession(true)
-                .and()
-                //登录后记住用户，下次自动登录
-                .rememberMe()
-                .tokenValiditySeconds(1209600)
-                //数据库中必须存在名为persistent_logins的表
-                .tokenRepository(tokenRepository);
+                //.and()
+                ////登录后记住用户，下次自动登录
+                //.rememberMe()
+                //.tokenValiditySeconds(1209600)
+                ////数据库中必须存在名为persistent_logins的表
+                //.tokenRepository(tokenRepository)
+        ;
     }
 
     @Bean
