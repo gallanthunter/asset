@@ -41,7 +41,7 @@
         <appender-ref ref="CONSOLE"></appender-ref>
     </logger>
 
-    <logger name="org.springframework" level="DEBUG">
+    <logger name="org.springframework" level="INFO">
         <appender-ref ref="CONSOLE"></appender-ref>
     </logger>
 
@@ -51,8 +51,8 @@
 
     <root>
         <level value="info"/>
-        <appender-ref ref="STDOUT"></appender-ref>
-        <appender-ref ref="FILE"></appender-ref>
+        <appender-ref ref="CONSOLE"></appender-ref>
+        <!--<appender-ref ref="FILE"></appender-ref>-->
     </root>
 
 </configuration>

@@ -26,5 +26,8 @@ var app = angular.module('app', [
             });
 
         $urlRouterProvider
-            .otherwise('index');
+            .when('', {
+                url: '/'
+            })
+        ;
     });
