@@ -1,6 +1,7 @@
 package pers.zhangzhijun.amp.repository;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 import pers.zhangzhijun.amp.domain.Log;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
  * Date     : 23:11
  * Since    : v1.0.0
  */
+@Repository
 public interface LogRepository extends CrudRepository<Log, Long> {
     Log findById(String id);
 

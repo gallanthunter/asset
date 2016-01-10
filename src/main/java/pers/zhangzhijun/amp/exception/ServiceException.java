@@ -5,7 +5,8 @@ package pers.zhangzhijun.amp.exception;
  */
 public class ServiceException extends Exception {
 
-    public static void nameNullException() {
+    private String errorCode;
+    private String errorDesc;
 
-    }
+
 }

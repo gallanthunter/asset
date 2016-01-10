@@ -2,6 +2,7 @@ package pers.zhangzhijun.amp.repository;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 import pers.zhangzhijun.amp.domain.Asset;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 /**
  * Created by Zhang Zhijun on 2015/8/23.
  */
+@Repository
 public interface AssetRepository extends CrudRepository<Asset, Long> {
     List<Asset> findAll();
     
