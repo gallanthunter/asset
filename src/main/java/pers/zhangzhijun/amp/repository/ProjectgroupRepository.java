@@ -2,7 +2,7 @@ package pers.zhangzhijun.amp.repository;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import pers.zhangzhijun.amp.domain.Projectgroup;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  * Date     : 22:33
  * Since    : v1.0.0
  */
-@Repository
+@Transactional
 public interface ProjectgroupRepository extends CrudRepository<Projectgroup,Long> {
     Projectgroup findById(String id);
 

@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
  * Since    : v1.0.0
  */
 @Entity
-@Table(name = "T_TYPE")
+@Table(name = "T_ASSETTYPE")
 public class AssetType {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

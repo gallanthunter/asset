@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
  * Created by ZhangZhijun on 2015/9/11.
  */
 @Entity
-@Table(name = "T_USRR")
+@Table(name = "T_USER")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

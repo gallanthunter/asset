@@ -2,7 +2,7 @@ package pers.zhangzhijun.amp.repository;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import pers.zhangzhijun.amp.domain.Subscription;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  * Date     : 23:17
  * Since    : v1.0.0
  */
-@Repository
+@Transactional
 public interface SubscriptionRepository extends CrudRepository<Subscription, Long> {
 
     @Query("SELECT a from Asset a, User u, Subscription s where a.assetId = s.aid and u.id = s.sid and s.aid = ?1")

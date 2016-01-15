@@ -42,7 +42,7 @@ public class Asset {
     private String protocolId;
 
     @Size(max = 16)
-    @Column(name = "asset_staus")
+    @Column(name = "asset_status")
     private String status;
 
     @Size(max = 64)
