@@ -1,53 +1,47 @@
 package pers.zhangzhijun.amp.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
  * Created by Zhang Zhijun on 2015/8/22.
  */
 @Entity
-@Table(name= "T_ASSET")
+@Table(name = "T_ASSET")
 public class Asset {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Size(max = 32)
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private String id;
 
     @Size(max = 16)
-    @Column(name = "asset_id")
+    @Column(name = "asset_id", nullable = false)
     private String assetId;
 
     @Size(max = 32)
-    @Column(name = "asset_name")
-    @NotNull
+    @Column(name = "asset_name", nullable = false)
     private String name;
 
     @Size(max = 32)
-    @Column(name = "asset_model")
-    @NotNull
+    @Column(name = "asset_model", nullable = false)
     private String model;
 
     @Size(max = 32)
-    @Column(name = "asset_type_id")
-    @NotNull
+    @Column(name = "asset_type_id", nullable = false)
     private String typeId;
 
     @Size(max = 32)
-    @Column(name = "asset_protocol_id")
-    @NotNull
+    @Column(name = "asset_protocol_id", nullable = false)
     private String protocolId;
 
     @Size(max = 16)
-    @Column(name = "asset_status")
+    @Column(name = "asset_status", nullable = false)
     private String status;
 
     @Size(max = 64)
-    @Column(name = "asset_manufacturer_id")
-    @NotNull
+    @Column(name = "asset_manufacturer_id", nullable = false)
     private String manufacturerId;
 
     @Size(max = 256)

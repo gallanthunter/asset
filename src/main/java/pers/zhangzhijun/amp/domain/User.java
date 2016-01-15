@@ -3,7 +3,6 @@ package pers.zhangzhijun.amp.domain;
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -17,33 +16,28 @@ public class User {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "user_id")
+    @Column(name = "user_id", nullable = false)
     @Size(max = 8)
-    @NotNull
     private String uid;
 
-    @Column(name = "user_name")
+    @Column(name = "user_name", nullable = false)
     @Size(max = 32)
-    @NotNull
     private String username;
 
-    @Column(name = "user_password")
+    @Column(name = "user_password", nullable = false)
     @Size(min = 8,max = 256)
-    @NotNull
     private String password;
 
     @Email
-    @Column(name = "user_email")
+    @Column(name = "user_email", nullable = false)
     @Size(max = 64)
-    @NotNull
     private String email;
 
-    @Column(name = "user_role_id")
+    @Column(name = "user_role_id", nullable = false)
     private String roleId;
 
-    @Column(name = "user_projectgroup_id")
+    @Column(name = "user_projectgroup_id", nullable = false)
     @Size(max = 32)
-    @NotNull
     private String projectGroupId;
 
     public User() {

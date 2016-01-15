@@ -1,7 +1,6 @@
 package pers.zhangzhijun.amp.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -19,9 +18,8 @@ public class Manufacturer {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "manufacturer_name")
+    @Column(name = "manufacturer_name", nullable = false)
     @Size(max = 32)
-    @NotNull
     private String name;
 
     @Column(name = "manufacturer_description")

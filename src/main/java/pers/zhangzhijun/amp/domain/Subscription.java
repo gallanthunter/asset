@@ -1,7 +1,6 @@
 package pers.zhangzhijun.amp.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
@@ -20,19 +19,16 @@ public class Subscription {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "asset_id")
+    @Column(name = "asset_id", nullable = false)
     @Size(max = 32)
-    @NotNull
     private String aid;
 
-    @Column(name = "user_id")
+    @Column(name = "user_id", nullable = false)
     @Size(max = 32)
-    @NotNull
     private String sid;
 
-    @Column(name = "subscription_time", insertable = false, updatable = false)
+    @Column(name = "subscription_time", nullable = false, insertable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    @NotNull
     private Date subscriptionTIme;
 
     public Long getId() {

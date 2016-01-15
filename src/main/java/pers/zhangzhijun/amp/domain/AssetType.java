@@ -1,7 +1,6 @@
 package pers.zhangzhijun.amp.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -16,12 +15,11 @@ import javax.validation.constraints.Size;
 public class AssetType {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "type_name")
+    @Column(name = "type_name", nullable = false)
     @Size(max = 32)
-    @NotNull
     private String name;
 
     @Column(name = "type_description")

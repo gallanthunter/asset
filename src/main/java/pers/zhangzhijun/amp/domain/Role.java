@@ -17,9 +17,8 @@ public class Role {
     @NotNull
     private Long id;
 
-    @Column(name = "role_name")
+    @Column(name = "role_name", nullable = false)
     @Size(max = 32)
-    @NotNull
     private String name;
 
     @Column(name = "role_description")

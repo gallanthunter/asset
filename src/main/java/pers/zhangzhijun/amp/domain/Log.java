@@ -1,8 +1,8 @@
 package pers.zhangzhijun.amp.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
 /**
  * ClassName: pers.zhangzhijun.amp.domain
@@ -16,20 +16,19 @@ import javax.validation.constraints.Size;
 public class Log {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "date")
-    private String date;
+    @Column(name = "date", nullable = false, insertable = false, updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date;
 
-    @Column(name = "operator")
+    @Column(name = "operator", nullable = false)
     @Size(max = 32)
-    @NotNull
     private String operator;
 
-    @Column(name = "log_content")
+    @Column(name = "log_content", nullable = false)
     @Size(max = 256)
-    @NotNull
     private String content;
 
     public Long getId() {
@@ -40,11 +39,11 @@ public class Log {
         this.id = id;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

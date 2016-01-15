@@ -1,7 +1,6 @@
 package pers.zhangzhijun.amp.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -19,9 +18,8 @@ public class Projectgroup {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "projectgroup_name")
+    @Column(name = "projectgroup_name", nullable = false)
     @Size(max = 32)
-    @NotNull
     private String name;
 
     @Column(name = "projectgroup_description")

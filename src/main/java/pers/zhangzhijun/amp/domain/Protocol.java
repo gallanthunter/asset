@@ -1,7 +1,6 @@
 package pers.zhangzhijun.amp.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -21,8 +20,7 @@ public class Protocol {
     private String id;
 
     @Size(max = 32)
-    @Column(name = "protocol_name")
-    @NotNull
+    @Column(name = "protocol_name", nullable = false)
     private String name;
 
     @Size(max = 256)

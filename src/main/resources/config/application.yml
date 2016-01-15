@@ -1,6 +1,24 @@
 banner:
     charset: UTF-8
+
+server:
+    address: 127.0.0.1
+    port: 8080
+    session:
+        timeout: 180
+#    ssl:
+#      key-store:
+#      key-store-password:
+    compression:
+      enabled: true
+      mime-types: `text/html,text/css,application/json`
+
 spring:
+
+    aop:
+          auto: true
+          proxy-target-class: false
+
     application:
         name: Asset Management Platform
 
@@ -34,12 +52,22 @@ spring:
         password:
         default-encoding: UTF-8
 
+    http:
+      encoding:
+        charset: UTF-8
+        enabled: true
+        force: true
+
+    mvc:
+      favicon:
+        enabled: true
 #security:
 #    user: admin
 #    password: admin
 #    role: SUPERUSER
 
 logging:
+    config: `classpath:logback-spring.xml`
     level.*: DEBUG  #(TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF)
     #file: run.log
-    #path: /var/log
+

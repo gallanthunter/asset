@@ -37,11 +37,15 @@
         </triggeringPolicy>
     </appender>
 
-    <logger name="pers.zhangzhijun.amp" level="DEBUG">
+    <logger name="org.springframework" level="INFO">
         <appender-ref ref="CONSOLE"></appender-ref>
     </logger>
 
-    <logger name="org.springframework" level="INFO">
+    <logger name="org.hibernate" level="INFO">
+        <appender-ref ref="CONSOLE"></appender-ref>
+    </logger>
+
+    <logger name="pers.zhangzhijun" level="DEBUG">
         <appender-ref ref="CONSOLE"></appender-ref>
     </logger>
 
@@ -50,7 +54,7 @@
     </logger>
 
     <root>
-        <level value="info"/>
+        <level value="DEBUG"/>
         <appender-ref ref="CONSOLE"></appender-ref>
         <!--<appender-ref ref="FILE"></appender-ref>-->
     </root>
