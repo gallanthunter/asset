@@ -24,7 +24,6 @@ public class Role {
 
     @Column(name = "description")
     @Size(max = 256)
-    @NotNull
     private String description;
 
     public Role() {

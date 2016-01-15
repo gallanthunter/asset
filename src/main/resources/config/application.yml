@@ -23,7 +23,7 @@ spring:
         show-sql: true
         hibernate:
             naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
-            #dialect: org.hibernate.dialect.PostgreSQLDialect
+            dialect: org.hibernate.dialect.PostgreSQLDialect
             ddl-auto: update
 
     mail:
