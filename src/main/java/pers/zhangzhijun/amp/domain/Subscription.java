@@ -3,6 +3,7 @@ package pers.zhangzhijun.amp.domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.sql.Timestamp;
 
 /**
  * ClassName: pers.zhangzhijun.amp.domain
@@ -32,7 +33,7 @@ public class Subscription {
     @Column(name = "subscriptionTime")
     @Size(max = 32)
     @NotNull
-    private String subscriptionTIme;
+    private Timestamp subscriptionTIme;
 
     public Long getId() {
         return id;
@@ -58,11 +59,11 @@ public class Subscription {
         this.sid = sid;
     }
 
-    public String getSubscriptionTIme() {
+    public Timestamp getSubscriptionTIme() {
         return subscriptionTIme;
     }
 
-    public void setSubscriptionTIme(String subscriptionTIme) {
+    public void setSubscriptionTIme(Timestamp subscriptionTIme) {
         this.subscriptionTIme = subscriptionTIme;
     }
 

@@ -7,27 +7,30 @@ var app = angular.module('app', [
     .config(function ($stateProvider, $urlRouterProvider) {
 
         $stateProvider
-            .state('index', {
-                url: '/',
-                templateUrl: 'index.html',
-                controller: 'indexController'
+            .state('header', {
+                url: '/header',
+                templateUrl: '/views/header.html'
             })
-            .state('index.list', {
+            .state('list', {
                 url: '/asset/list',
                 templateUrl: '/views/assetList.html'
             })
-            .state('index.statistics', {
+            .state('statistics', {
                 url: '/asset/statistics',
-                templateUrl: 'views/statistics/html'
+                templateUrl: 'views/statistics.html'
             })
-            .state('index.about', {
+            .state('footer', {
+                            url: '/footer',
+                            templateUrl: 'views/footer.html'
+                        })
+            .state('about', {
                 url: '/about.html',
                 templateUrl: 'vies/about.html'
             });
 
         $urlRouterProvider
             .when('', {
-                url: '/'
+                url: '/header'
             })
         ;
     });
