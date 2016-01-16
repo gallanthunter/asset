@@ -1,5 +1,7 @@
 package pers.zhangzhijun.amp.dto;
 
+import pers.zhangzhijun.amp.domain.AssetStatus;
+
 /**
  * Created by ZhangZhijun on 2015/8/30.
  */
@@ -16,7 +18,7 @@ public class AssetDTO {
 
     private String protocolId;
 
-    private String status;
+    private AssetStatus status;
 
     private String manufacturerId;
 
@@ -73,11 +75,11 @@ public class AssetDTO {
         this.protocolId = protocolId;
     }
 
-    public String getStatus() {
+    public AssetStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(AssetStatus status) {
         this.status = status;
     }
 

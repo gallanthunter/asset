@@ -2,6 +2,7 @@ package pers.zhangzhijun.amp.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 /**
  * ClassName: pers.zhangzhijun.amp.domain
@@ -11,8 +12,8 @@ import javax.validation.constraints.Size;
  * Since    : v1.0.0
  */
 @Entity
-@Table(name= "T_TOKEN")
-public class Token {
+@Table(name = "T_TOKEN")
+public class Token implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Size(max = 32)

@@ -2,6 +2,7 @@ package pers.zhangzhijun.amp.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 /**
  * ClassName: pers.zhangzhijun.amp.domain
@@ -12,7 +13,7 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "T_PROJECTGROUP")
-public class Projectgroup {
+public class Projectgroup implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")

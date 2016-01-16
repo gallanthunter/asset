@@ -2,13 +2,14 @@ package pers.zhangzhijun.amp.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 /**
  * Created by Zhang Zhijun on 2015/8/22.
  */
 @Entity
 @Table(name = "T_ASSET")
-public class Asset {
+public class Asset implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -38,7 +39,8 @@ public class Asset {
 
     @Size(max = 16)
     @Column(name = "asset_status", nullable = false)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private AssetStatus status = AssetStatus.NORMAL;
 
     @Size(max = 64)
     @Column(name = "asset_manufacturer_id", nullable = false)
@@ -96,11 +98,11 @@ public class Asset {
         this.protocolId = protocolId;
     }
 
-    public String getStatus() {
+    public AssetStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(AssetStatus status) {
         this.status = status;
     }
 

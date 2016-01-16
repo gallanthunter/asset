@@ -2,35 +2,23 @@
  * Created by ZhangZhijun on 2015/8/30.
  */
 var app = angular.module('app', [
-        'ui.router'
+        'ngRouter'
     ])
-    .config(function ($stateProvider, $urlRouterProvider) {
+    .config(['$routeProvider',function ($routeProvider) {
 
-        $stateProvider
-            .state('header', {
-                url: '/header',
-                templateUrl: '/views/header.html'
+        $routeProvider
+            .when('/' ,{
+                templateUrl: 'index.html',
+                controller: 'IndexController'
             })
-            .state('list', {
-                url: '/asset/list',
-                templateUrl: '/views/assetList.html'
+            .when('/asset',{
+                templateUrl: 'views/assetList.html'
             })
-            .state('statistics', {
-                url: '/asset/statistics',
-                templateUrl: 'views/statistics.html'
+            .when('/about',{
+                templateUrl: 'views/about.html'
             })
-            .state('footer', {
-                            url: '/footer',
-                            templateUrl: 'views/footer.html'
-                        })
-            .state('about', {
-                url: '/about.html',
-                templateUrl: 'vies/about.html'
-            });
+            .otherwise({
+                redirectTo: '/'
+            })
 
-        $urlRouterProvider
-            .when('', {
-                url: '/header'
-            })
-        ;
-    });
+    }]);

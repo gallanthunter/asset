@@ -4,13 +4,14 @@ import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 /**
  * Created by ZhangZhijun on 2015/9/11.
  */
 @Entity
 @Table(name = "T_USER")
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -25,7 +26,7 @@ public class User {
     private String username;
 
     @Column(name = "user_password", nullable = false)
-    @Size(min = 8,max = 256)
+    @Size(min = 8, max = 256)
     private String password;
 
     @Email

@@ -1,5 +1,7 @@
 package pers.zhangzhijun.amp.repository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +15,7 @@ import java.util.List;
 @Transactional
 public interface AssetRepository extends CrudRepository<Asset, Long> {
     List<Asset> findAll();
-    
+
     @Query("select a from Asset a where a.assetId = ?1")
     Asset findByAssetId(String assetId);
 

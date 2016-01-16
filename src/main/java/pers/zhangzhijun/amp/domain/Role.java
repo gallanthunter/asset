@@ -3,13 +3,14 @@ package pers.zhangzhijun.amp.domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 /**
  * Created by ZhangZhijun on 2015/9/11.
  */
 @Entity
 @Table(name = "T_ROLE")
-public class Role {
+public class Role implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

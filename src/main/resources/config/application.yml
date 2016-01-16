@@ -11,7 +11,7 @@ server:
 #      key-store-password:
     compression:
       enabled: true
-      mime-types: `text/html,text/css,application/json`
+      mime-types: "text/html,text/css,application/json"
 
 spring:
 
@@ -67,7 +67,7 @@ spring:
 #    role: SUPERUSER
 
 logging:
-    config: `classpath:logback-spring.xml`
+    config: "classpath:logback-spring.xml"
     level.*: DEBUG  #(TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF)
     #file: run.log
 
