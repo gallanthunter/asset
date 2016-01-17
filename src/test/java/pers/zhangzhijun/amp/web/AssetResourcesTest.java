@@ -5,12 +5,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -22,16 +20,18 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 import pers.zhangzhijun.amp.Application;
+import pers.zhangzhijun.amp.domain.AssetStatus;
 import pers.zhangzhijun.amp.dto.AssetDTO;
 import pers.zhangzhijun.amp.repository.AssetRepository;
 import pers.zhangzhijun.amp.service.AssetService;
 
 import javax.annotation.PostConstruct;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static pers.zhangzhijun.amp.util.DateConvert.toByteArray;
 
 /**
@@ -41,7 +41,8 @@ import static pers.zhangzhijun.amp.util.DateConvert.toByteArray;
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
 @DirtiesContext
-@Transactional
+//@Transactional
+@WithMockUser(username = "admin", password = "admin", roles = "ROLE_ADMIN")
 @TestExecutionListeners({
         ServletTestExecutionListener.class,
         DependencyInjectionTestExecutionListener.class,
@@ -74,23 +75,36 @@ public class AssetResourcesTest {
 
     @Before
     public void setUp() throws Exception {
-        assetDTO = new AssetDTO();
-        assetDTO.setName("123");
+        if (assetDTO == null) {
+            assetDTO = new AssetDTO();
+        }
+        assetDTO.setName("水滴传感器");
+        assetDTO.setManufacturerId("1");
+        assetDTO.setModel("WL-123");
+        assetDTO.setProtocolId("Zigbbe");
+        assetDTO.setTypeId("1");
+        assetDTO.setStatus(AssetStatus.ABNORMAL);
     }
 
     @After
     public void tearDown() throws Exception {
-        
+
     }
 
     @Test
     public void testCreate() throws Exception {
+        //assertThat(assetRepository.findAll().size() == 0);
+        assertThat(assetRepository.findByName(assetDTO.getName()).size() == 0);
         ResultActions resultActions = restMockMvc.perform(post("/asset/create")
                 .accept(MediaType.parseMediaType("application/json;charset=UTF-8"))
                 .content(toByteArray(assetDTO))
         );
 
-        System.out.println(resultActions.andReturn().getRequest().toString());
-        System.out.println(resultActions.andReturn().getResponse().toString());
+        resultActions.andExpect(status().isCreated())
+                //.andExpect(jsonPath("$.name").value(equals(assetDTO.getName())))
+        ;
+
+        System.out.println("Request message: " + resultActions.andReturn().getRequest().getRequestURL().toString());
+        System.out.println("Response message: " + resultActions.andReturn().getResponse().getContentAsString());
     }
 }
