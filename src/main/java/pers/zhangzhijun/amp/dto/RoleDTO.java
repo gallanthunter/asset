@@ -1,9 +1,11 @@
 package pers.zhangzhijun.amp.dto;
 
+import java.io.Serializable;
+
 /**
  * Created by ZhangZhijun on 2015/9/11.
  */
-public class RoleDTO {
+public class RoleDTO implements Serializable {
     private Long id;
 
     private String name;

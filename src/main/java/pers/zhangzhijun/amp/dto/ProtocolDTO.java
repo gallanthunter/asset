@@ -1,5 +1,7 @@
 package pers.zhangzhijun.amp.dto;
 
+import java.io.Serializable;
+
 /**
  * ClassName: pers.zhangzhijun.amp.dto
  * Function :
@@ -7,7 +9,7 @@ package pers.zhangzhijun.amp.dto;
  * Date     : 20:55
  * Since    : v1.0.0
  */
-public class ProtocolDTO {
+public class ProtocolDTO implements Serializable {
     private String id;
     private String name;
     private String description;

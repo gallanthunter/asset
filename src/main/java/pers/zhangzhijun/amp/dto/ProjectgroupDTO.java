@@ -1,5 +1,7 @@
 package pers.zhangzhijun.amp.dto;
 
+import java.io.Serializable;
+
 /**
  * ClassName: pers.zhangzhijun.amp.dto
  * Function :
@@ -7,7 +9,7 @@ package pers.zhangzhijun.amp.dto;
  * Date     : 22:28
  * Since    : v1.0.0
  */
-public class ProjectgroupDTO {
+public class ProjectgroupDTO implements Serializable {
     private String id;
 
     private String name;

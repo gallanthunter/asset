@@ -23,31 +23,40 @@ public class AssetResources {
     AssetService assetService;
 
     @RequestMapping(value = "/create",
-                    method = RequestMethod.POST,
-                    headers = MediaType.APPLICATION_JSON_VALUE
-                    )
+            method = RequestMethod.POST,
+            headers = MediaType.APPLICATION_JSON_VALUE
+    )
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<AssetDTO> create(AssetDTO assetDTO) {
         assetService.create(assetDTO);
-        return new ResponseEntity<AssetDTO>(assetDTO,HttpStatus.CREATED);
+        return new ResponseEntity<AssetDTO>(assetDTO, HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/update",
-                    method = RequestMethod.POST,
+            method = RequestMethod.POST,
             headers = MediaType.APPLICATION_JSON_VALUE
     )
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<AssetDTO> update(AssetDTO assetDTO) {
         assetService.update(assetDTO);
-        return new ResponseEntity<AssetDTO>(assetDTO,HttpStatus.CREATED);
+        return new ResponseEntity<AssetDTO>(assetDTO, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/list/{assetId}",
-    method = RequestMethod.GET,
-    headers = MediaType.APPLICATION_JSON_VALUE
+    @RequestMapping(value = "/list",
+            method = RequestMethod.GET,
+            headers = MediaType.APPLICATION_JSON_VALUE
     )
-    public ResponseEntity<AssetDTO> getByAssetId(@PathVariable String assetId){
-        return new ResponseEntity<AssetDTO>(assetService.getByAssetId(assetId),HttpStatus.OK);
+    public ResponseEntity<?> getAll(){
+        return new ResponseEntity<>(assetService.getAll(),HttpStatus.OK);
+    }
+
+
+    @RequestMapping(value = "/list/{assetId}",
+            method = RequestMethod.GET,
+            headers = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<AssetDTO> getByAssetId(@PathVariable String assetId) {
+        return new ResponseEntity<AssetDTO>(assetService.getByAssetId(assetId), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/delete/{assetId}",
@@ -55,7 +64,8 @@ public class AssetResources {
             headers = MediaType.APPLICATION_JSON_VALUE
     )
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public void delete(@PathVariable String assetId) {
+    public HttpStatus delete(@PathVariable String assetId) {
         assetService.delete(assetId);
+        return HttpStatus.OK;
     }
 }

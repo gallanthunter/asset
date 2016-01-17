@@ -2,10 +2,12 @@ package pers.zhangzhijun.amp.dto;
 
 import pers.zhangzhijun.amp.domain.AssetStatus;
 
+import java.io.Serializable;
+
 /**
  * Created by ZhangZhijun on 2015/8/30.
  */
-public class AssetDTO {
+public class AssetDTO implements Serializable {
     private String id;
 
     private String assetId;
