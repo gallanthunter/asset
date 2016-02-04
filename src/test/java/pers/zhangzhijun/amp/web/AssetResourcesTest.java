@@ -10,6 +10,7 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -41,7 +42,7 @@ import static pers.zhangzhijun.amp.util.DateConvert.toByteArray;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
-@WebAppConfiguration
+@WebAppConfiguration(value = "src/resources/static")
 @DirtiesContext
 @Transactional
 @WithMockUser(username = "admin", password = "admin", roles = "ROLE_ADMIN")
@@ -52,7 +53,11 @@ import static pers.zhangzhijun.amp.util.DateConvert.toByteArray;
         TransactionalTestExecutionListener.class,
         SqlScriptsTestExecutionListener.class
 })
+@ActiveProfiles("test")
 public class AssetResourcesTest {
+
+    public static String BASE_URL ="/asset";
+    public static String CREATE_ASSET_URL = BASE_URL + "/create";
 
     @Autowired
     WebApplicationContext webApplicationContext;
@@ -97,16 +102,17 @@ public class AssetResourcesTest {
     @Test
     public void testCreate() throws Exception {
         assertThat(assetRepository.findAll().size() == 0);
-        ResultActions resultActions = restMockMvc.perform(post("/asset/create")
-                .accept(MediaType.parseMediaType("application/json;charset=UTF-8"))
+        ResultActions resultActions = restMockMvc.perform(post(CREATE_ASSET_URL)
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .content(toByteArray(assetDTO))
         );
-
-        resultActions.andExpect(status().isCreated())
-                //.andExpect(jsonPath("$.name").value(equals(assetDTO.getName())))
-        ;
-
         System.out.println("Request message: " + resultActions.andReturn().getRequest().getRequestURL().toString());
         System.out.println("Response message: " + resultActions.andReturn().getResponse().getContentAsString());
+
+        resultActions.andExpect(status().isCreated())
+                //.andExpect(jsonPath("$.name"))
+        ;
+
+
     }
 }

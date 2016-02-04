@@ -33,30 +33,24 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests()
-                //允许所有用户访问”/”和”/list”
-                .antMatchers("/", "/list")
-                .permitAll()
-                //其他地址的访问均需验证权限
                 .anyRequest()
-                .authenticated()
-                .and()
-                .formLogin()
-                //指定登录页是”/login”
-                .loginPage("/login")
+                //.antMatchers("/", "/list")
                 .permitAll()
-                //登录成功后可使用loginSuccessHandler()存储用户信息，可选
-                .successHandler(loginSuccessHandler())
-                .and()
-                .logout()
-                //退出登录后的默认网址是”/”
-                .logoutSuccessUrl("/")
-                .permitAll()
-                .invalidateHttpSession(true)
+                //.anyRequest()
+                //.authenticated()
                 //.and()
-                ////登录后记住用户，下次自动登录
+                //.formLogin()
+                //.loginPage("/login")
+                //.permitAll()
+                //.successHandler(loginSuccessHandler())
+                //.and()
+                //.logout()
+                //.logoutSuccessUrl("/")
+                //.permitAll()
+                //.invalidateHttpSession(true)
+                //.and()
                 //.rememberMe()
                 //.tokenValiditySeconds(1209600)
-                ////数据库中必须存在名为persistent_logins的表
                 //.tokenRepository(tokenRepository)
         ;
     }

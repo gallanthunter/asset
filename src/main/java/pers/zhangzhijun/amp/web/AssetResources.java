@@ -42,13 +42,13 @@ public class AssetResources {
         return new ResponseEntity<AssetDTO>(assetDTO, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/list",
-            method = RequestMethod.GET,
-            headers = MediaType.APPLICATION_JSON_VALUE
-    )
-    public ResponseEntity<?> getAll(){
-        return new ResponseEntity<>(assetService.getAll(),HttpStatus.OK);
-    }
+    //@RequestMapping(value = "/list",
+    //        method = RequestMethod.GET,
+    //        headers = MediaType.APPLICATION_JSON_VALUE
+    //)
+    //public ResponseEntity<?> getAll(){
+    //    return new ResponseEntity<>(assetService.getAll(),HttpStatus.OK);
+    //}
 
 
     @RequestMapping(value = "/list/{assetId}",
