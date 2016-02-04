@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.http.MediaType;
@@ -20,6 +21,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 import pers.zhangzhijun.amp.Application;
 import pers.zhangzhijun.amp.domain.AssetStatus;
@@ -41,7 +43,7 @@ import static pers.zhangzhijun.amp.util.DateConvert.toByteArray;
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
 @DirtiesContext
-//@Transactional
+@Transactional
 @WithMockUser(username = "admin", password = "admin", roles = "ROLE_ADMIN")
 @TestExecutionListeners({
         ServletTestExecutionListener.class,
@@ -70,6 +72,7 @@ public class AssetResourcesTest {
 
     @PostConstruct
     public void postConstruct() {
+        MockitoAnnotations.initMocks(this);
         this.restMockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
 
@@ -93,8 +96,7 @@ public class AssetResourcesTest {
 
     @Test
     public void testCreate() throws Exception {
-        //assertThat(assetRepository.findAll().size() == 0);
-        assertThat(assetRepository.findByName(assetDTO.getName()).size() == 0);
+        assertThat(assetRepository.findAll().size() == 0);
         ResultActions resultActions = restMockMvc.perform(post("/asset/create")
                 .accept(MediaType.parseMediaType("application/json;charset=UTF-8"))
                 .content(toByteArray(assetDTO))

@@ -8,7 +8,6 @@ target/
 *.ipr
 *.iws
 idea/
-init/
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
