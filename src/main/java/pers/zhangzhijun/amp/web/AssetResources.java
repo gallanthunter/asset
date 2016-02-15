@@ -17,7 +17,7 @@ import pers.zhangzhijun.amp.service.AssetService;
 @RestController
 @RequestMapping("/asset")
 public class AssetResources {
-    private Logger logger = LoggerFactory.getLogger(AssetResources.class);
+    private static Logger logger = LoggerFactory.getLogger(AssetResources.class);
 
     @Autowired
     AssetService assetService;

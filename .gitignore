@@ -20,8 +20,9 @@ idea/
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-# static/libs
+# static/libs/node_modules
 libs/
+node_modules/
 
 # logs
 *.log

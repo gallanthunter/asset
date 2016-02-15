@@ -9,9 +9,16 @@
     <link rel="stylesheet" type="text/css" href="libs/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="libs/bootstrap/dist/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="libs/angular-chart.js/dist/angular-chart.min.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
 <div class="container-fluid">
+
     <div class="row">
         <div ng-include="'views/header.html'"></div>
     </div>
@@ -28,6 +35,7 @@
         <div ng-view=""></div>
     </div>
 </div>
+<script type="text/javascript" src="libs/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="libs/angular/angular.min.js"></script>
 <script type="text/javascript" src="libs/angular-route/angular-route.min.js"></script>
