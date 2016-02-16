@@ -1,4 +1,4 @@
-package pers.zhangzhijun.amp.service;
+package pers.zhangzhijun.amp.service.asset;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,9 +22,9 @@ public class ProtocolService {
     @Autowired
     ProtocolRepository protocolRepository;
 
-    public void createProtocol(ProtocolDTO protocolDTO){
+    public void createProtocol(ProtocolDTO protocolDTO) {
         Protocol protocol;
-        if (protocolDTO.getName() == null){
+        if (protocolDTO.getName() == null) {
             logger.error("Protocol name cannot be null!");
         }
         protocol = convertProtocolDTOToProtocolt(protocolDTO);
@@ -40,18 +40,18 @@ public class ProtocolService {
         return protocolDTO;
     }
 
-    public void updateProtocol(ProtocolDTO ProtocolDTO){
+    public void updateProtocol(ProtocolDTO ProtocolDTO) {
         Protocol protocol;
-        if (ProtocolDTO.getId() == null){
+        if (ProtocolDTO.getId() == null) {
             logger.error("A Protocol must be chosed!");
         }
         protocol = convertProtocolDTOToProtocolt(ProtocolDTO);
         protocolRepository.save(protocol);
     }
 
-    public void deleteProtocol(ProtocolDTO protocolDTO){
+    public void deleteProtocol(ProtocolDTO protocolDTO) {
         Protocol protocol;
-        if (protocolDTO.getId() == null){
+        if (protocolDTO.getId() == null) {
             logger.error("A Protocol must be chosed!");
         }
         protocol = convertProtocolDTOToProtocolt(protocolDTO);

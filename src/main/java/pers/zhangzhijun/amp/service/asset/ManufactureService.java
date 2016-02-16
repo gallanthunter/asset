@@ -1,4 +1,4 @@
-package pers.zhangzhijun.amp.service;
+package pers.zhangzhijun.amp.service.asset;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,9 +22,9 @@ public class ManufactureService {
     @Autowired
     ManufacturerRepository manufacturerRepository;
 
-    public void createManufacture(ManufacturerDTO manufacturerDTO){
+    public void createManufacture(ManufacturerDTO manufacturerDTO) {
         Manufacturer manufacturer;
-        if (manufacturerDTO.getName() == null){
+        if (manufacturerDTO.getName() == null) {
             logger.error("Manufacturer name cannot be null!");
         }
         manufacturer = convertManufacturerDTOToManufacturet(manufacturerDTO);
@@ -39,18 +39,18 @@ public class ManufactureService {
         return convertManufactureToManufacturetDTO(manufacturer);
     }
 
-    public void updateManufacture(ManufacturerDTO manufacturerDTO){
+    public void updateManufacture(ManufacturerDTO manufacturerDTO) {
         Manufacturer manufacturer;
-        if (manufacturerDTO.getId() == null){
+        if (manufacturerDTO.getId() == null) {
             logger.error("A manufacturer must be chosed!");
         }
         manufacturer = convertManufacturerDTOToManufacturet(manufacturerDTO);
         manufacturerRepository.save(manufacturer);
     }
 
-    public void deleteManufacture(ManufacturerDTO manufacturerDTO){
+    public void deleteManufacture(ManufacturerDTO manufacturerDTO) {
         Manufacturer manufacturer;
-        if (manufacturerDTO.getId() == null){
+        if (manufacturerDTO.getId() == null) {
             logger.error("A manufacturer must be chosed!");
         }
         manufacturer = convertManufacturerDTOToManufacturet(manufacturerDTO);

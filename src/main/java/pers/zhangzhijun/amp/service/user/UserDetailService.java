@@ -1,4 +1,4 @@
-package pers.zhangzhijun.amp.service;
+package pers.zhangzhijun.amp.service.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

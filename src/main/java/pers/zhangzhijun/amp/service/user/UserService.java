@@ -1,4 +1,4 @@
-package pers.zhangzhijun.amp.service;
+package pers.zhangzhijun.amp.service.user;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,15 +23,15 @@ public class UserService {
     @Autowired
     SubscriptionRepository subscriptionRepository;
 
-    public void createUser(UserDTO userDTO){
+    public void createUser(UserDTO userDTO) {
         User user = new User();
         user = userRepository.findByUid(userDTO.getUid());
-        if (user != null){
+        if (user != null) {
             logger.debug("User " + user.getUid() + " already exist!");
         }
         user = convertUserDTOToUser(userDTO);
         userRepository.save(user);
-        logger.debug("User {} created successfully!",user.toString());
+        logger.debug("User {} created successfully!", user.toString());
     }
 
     public void updateUser(UserDTO userDTO) {
@@ -63,7 +63,7 @@ public class UserService {
             logger.debug("User {} not exist!", userDTO.getUid());
         }
         if (subscriptionRepository.findBySid(userDTO.getUid()) != null) {
-            logger.debug("User {} associate with a asset!",userDTO.getUid());
+            logger.debug("User {} associate with a asset!", userDTO.getUid());
         }
         userRepository.delete(user);
         logger.debug("User {} delete successfully!");

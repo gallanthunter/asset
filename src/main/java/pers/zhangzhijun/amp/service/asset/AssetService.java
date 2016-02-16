@@ -1,4 +1,4 @@
-package pers.zhangzhijun.amp.service;
+package pers.zhangzhijun.amp.service.asset;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,15 +28,15 @@ public class AssetService {
 
     public void create(AssetDTO assetDTO) {
         Asset asset = new Asset();
-        if (assetRepository.findByAssetId(assetDTO.getAssetId()) != null){
-            logger.debug("the assetid {} already exist!",assetDTO.getAssetId());
+        if (assetRepository.findByAssetId(assetDTO.getAssetId()) != null) {
+            logger.debug("the assetid {} already exist!", assetDTO.getAssetId());
         }
-        if(assetDTO.getAssetId() == null) {
+        if (assetDTO.getAssetId() == null) {
             assetDTO.setAssetId(GeneratorUUID.getUUID());
         }
         asset = covertAssetDTOToAsset(assetDTO);
         assetRepository.save(asset);
-        logger.debug("create asset: {} successful!",assetDTO.toString());
+        logger.debug("create asset: {} successful!", assetDTO.toString());
     }
 
     public void update(AssetDTO assetDTO) {
@@ -46,97 +46,97 @@ public class AssetService {
         }
         asset = covertAssetDTOToAsset(assetDTO);
         assetRepository.save(asset);
-        logger.debug("update asset: {} successful!",assetDTO.toString());
+        logger.debug("update asset: {} successful!", assetDTO.toString());
     }
 
-    public List<AssetDTO> getAll(){
+    public List<AssetDTO> getAll() {
         List<Asset> assetList = assetRepository.findAll();
         List<AssetDTO> assetDTOList = new ArrayList<AssetDTO>();
-        for (Asset asset: assetList){
+        for (Asset asset : assetList) {
             assetDTOList.add(convertAssetToAssetDTO(asset));
         }
 
         return assetDTOList;
     }
 
-    public AssetDTO getByAssetId(String assetId){
+    public AssetDTO getByAssetId(String assetId) {
         Asset asset = assetRepository.findByAssetId(assetId);
         AssetDTO assetDTO = convertAssetToAssetDTO(asset);
 
         return assetDTO;
     }
 
-    public List<AssetDTO> getByName(String name){
+    public List<AssetDTO> getByName(String name) {
         List<Asset> assetList = assetRepository.findByName(name);
         List<AssetDTO> assetDTOList = new ArrayList<AssetDTO>();
-        for (Asset asset: assetList){
+        for (Asset asset : assetList) {
             assetDTOList.add(convertAssetToAssetDTO(asset));
         }
 
         return assetDTOList;
     }
 
-    public List<AssetDTO> getByModel(String Model){
+    public List<AssetDTO> getByModel(String Model) {
         List<Asset> assetList = assetRepository.findByName(Model);
         List<AssetDTO> assetDTOList = new ArrayList<AssetDTO>();
-        for (Asset asset: assetList){
+        for (Asset asset : assetList) {
             assetDTOList.add(convertAssetToAssetDTO(asset));
         }
 
         return assetDTOList;
     }
 
-    public List<AssetDTO> getByType(String type){
+    public List<AssetDTO> getByType(String type) {
         List<Asset> assetList = assetRepository.findByName(type);
         List<AssetDTO> assetDTOList = new ArrayList<AssetDTO>();
-        for (Asset asset: assetList){
+        for (Asset asset : assetList) {
             assetDTOList.add(convertAssetToAssetDTO(asset));
         }
 
         return assetDTOList;
     }
 
-    public List<AssetDTO> getByProtocol(String protocol){
+    public List<AssetDTO> getByProtocol(String protocol) {
         List<Asset> assetList = assetRepository.findByName(protocol);
         List<AssetDTO> assetDTOList = new ArrayList<AssetDTO>();
-        for (Asset asset: assetList){
+        for (Asset asset : assetList) {
             assetDTOList.add(convertAssetToAssetDTO(asset));
         }
 
         return assetDTOList;
     }
 
-    public List<AssetDTO> getByStatus(String status){
+    public List<AssetDTO> getByStatus(String status) {
         List<Asset> assetList = assetRepository.findByName(status);
         List<AssetDTO> assetDTOList = new ArrayList<AssetDTO>();
-        for (Asset asset: assetList){
+        for (Asset asset : assetList) {
             assetDTOList.add(convertAssetToAssetDTO(asset));
         }
 
         return assetDTOList;
     }
 
-    public List<AssetDTO> getByManufacturer(String manufacturer){
+    public List<AssetDTO> getByManufacturer(String manufacturer) {
         List<Asset> assetList = assetRepository.findByName(manufacturer);
         List<AssetDTO> assetDTOList = new ArrayList<AssetDTO>();
-        for (Asset asset: assetList){
+        for (Asset asset : assetList) {
             assetDTOList.add(convertAssetToAssetDTO(asset));
         }
 
         return assetDTOList;
     }
 
-    public List<AssetDTO> getByNameAndModelAndTypeAndProtocolAndManufacturer(String paras){
+    public List<AssetDTO> getByNameAndModelAndTypeAndProtocolAndManufacturer(String paras) {
         List<Asset> assetList = assetRepository.findByName(paras);
         List<AssetDTO> assetDTOList = new ArrayList<AssetDTO>();
-        for (Asset asset: assetList){
+        for (Asset asset : assetList) {
             assetDTOList.add(convertAssetToAssetDTO(asset));
         }
 
         return assetDTOList;
     }
 
-    public void delete(String assetID){
+    public void delete(String assetID) {
         Asset asset = new Asset();
 
         asset = assetRepository.findByAssetId(assetID);
@@ -146,11 +146,11 @@ public class AssetService {
         }
 
         if (subscriptionRepository.findByAid(assetID) != null) {
-            logger.debug("Asset {} is associated with User!",asset.toString());
+            logger.debug("Asset {} is associated with User!", asset.toString());
         }
 
         assetRepository.delete(asset);
-        logger.debug("Delete asset {} successfully!",asset.toString());
+        logger.debug("Delete asset {} successfully!", asset.toString());
     }
 
     public Asset covertAssetDTOToAsset(AssetDTO assetDTO) {

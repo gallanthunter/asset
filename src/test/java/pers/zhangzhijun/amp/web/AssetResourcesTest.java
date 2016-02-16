@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.WebIntegrationTest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.DirtiesContext;
@@ -18,7 +19,6 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.springframework.test.context.web.ServletTestExecutionListener;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -28,7 +28,7 @@ import pers.zhangzhijun.amp.Application;
 import pers.zhangzhijun.amp.domain.AssetStatus;
 import pers.zhangzhijun.amp.dto.AssetDTO;
 import pers.zhangzhijun.amp.repository.AssetRepository;
-import pers.zhangzhijun.amp.service.AssetService;
+import pers.zhangzhijun.amp.service.asset.AssetService;
 
 import javax.annotation.PostConstruct;
 
@@ -41,8 +41,9 @@ import static pers.zhangzhijun.amp.util.DateConvert.toByteArray;
  * Created by ZhangZhijun on 2015/9/4.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
-@WebAppConfiguration(value = "src/resources/static")
+@SpringApplicationConfiguration(Application.class)
+//@WebAppConfiguration
+@WebIntegrationTest(randomPort = true)
 @DirtiesContext
 @Transactional
 @WithMockUser(username = "admin", password = "admin", roles = "ROLE_ADMIN")
@@ -73,7 +74,7 @@ public class AssetResourcesTest {
 
     AssetDTO assetDTO;
 
-    public MockMvc restMockMvc;
+    private MockMvc restMockMvc;
 
     @PostConstruct
     public void postConstruct() {
@@ -103,7 +104,8 @@ public class AssetResourcesTest {
     public void testCreate() throws Exception {
         assertThat(assetRepository.findAll().size() == 0);
         ResultActions resultActions = restMockMvc.perform(post(CREATE_ASSET_URL)
-                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .accept(MediaType.APPLICATION_JSON_UTF8)
+                //.contentType(MediaType.APPLICATION_JSON_UTF8)
                 .content(toByteArray(assetDTO))
         );
         System.out.println("Request message: " + resultActions.andReturn().getRequest().getRequestURL().toString());
