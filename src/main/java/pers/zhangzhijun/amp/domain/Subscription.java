@@ -15,6 +15,8 @@ import java.util.Date;
 @Entity
 @Table(name = "T_SUBSCRIPTION")
 public class Subscription implements Serializable {
+    private static final long serialVersionUID = -1583570849469017666L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")

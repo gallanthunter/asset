@@ -13,7 +13,9 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "T_PROJECTGROUP")
-public class Projectgroup implements Serializable{
+public class Projectgroup implements Serializable {
+    private static final long serialVersionUID = -5796080679092600885L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")

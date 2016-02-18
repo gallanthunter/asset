@@ -10,6 +10,8 @@ import java.io.Serializable;
  * Since    : v1.0.0
  */
 public class ProtocolDTO implements Serializable {
+    private static final long serialVersionUID = 7942905352101939084L;
+
     private String id;
     private String name;
     private String description;

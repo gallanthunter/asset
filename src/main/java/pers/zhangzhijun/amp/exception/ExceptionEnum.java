@@ -7,7 +7,7 @@ package pers.zhangzhijun.amp.exception;
  * Date     : 2015/12/26 20:59
  * Since    : v1.0.0
  */
-public enum ExceptionEnum implements IExceptionEnum {
+public enum ExceptionEnum implements IException {
 
     // Asset exception 100001 ~ 199999
     ASSET_NOT_EXIST("100001", "Asset not exist."),

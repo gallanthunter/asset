@@ -9,7 +9,9 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "T_ASSET")
-public class Asset implements Serializable{
+public class Asset implements Serializable {
+
+    private static final long serialVersionUID = -3016416569594316177L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

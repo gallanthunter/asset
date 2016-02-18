@@ -8,6 +8,8 @@ import java.io.Serializable;
  * Created by ZhangZhijun on 2015/8/30.
  */
 public class AssetDTO implements Serializable {
+    private static final long serialVersionUID = -6144411411532267090L;
+
     private String id;
 
     private String assetId;

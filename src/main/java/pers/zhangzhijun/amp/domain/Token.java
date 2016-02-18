@@ -14,6 +14,8 @@ import java.io.Serializable;
 @Entity
 @Table(name = "T_TOKEN")
 public class Token implements Serializable {
+    private static final long serialVersionUID = 2792839088439040631L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Size(max = 32)

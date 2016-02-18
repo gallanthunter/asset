@@ -14,6 +14,8 @@ import java.io.Serializable;
 @Entity
 @Table(name = "T_ASSETTYPE")
 public class AssetType implements Serializable {
+    private static final long serialVersionUID = -7071242094905187996L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)

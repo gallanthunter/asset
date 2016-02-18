@@ -10,6 +10,8 @@ import java.io.Serializable;
  * Since    : v1.0.0
  */
 public class LogDTO implements Serializable {
+    private static final long serialVersionUID = 1427229055261554211L;
+
     private String id;
 
     private String date;

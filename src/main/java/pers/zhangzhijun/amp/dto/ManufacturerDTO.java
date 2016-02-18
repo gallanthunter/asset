@@ -10,6 +10,8 @@ import java.io.Serializable;
  * Since    : v1.0.0
  */
 public class ManufacturerDTO implements Serializable {
+    private static final long serialVersionUID = -7096789505086206572L;
+
     private Long id;
 
     private String name;

@@ -6,6 +6,8 @@ import java.io.Serializable;
  * Created by ZhangZhijun on 2015/9/11.
  */
 public class UserDTO implements Serializable {
+    private static final long serialVersionUID = -8010196066778023292L;
+
     private Long id;
 
     private String uid;

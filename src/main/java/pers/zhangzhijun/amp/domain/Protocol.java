@@ -12,8 +12,10 @@ import java.io.Serializable;
  * Since    : v1.0.0
  */
 @Entity
-@Table(name= "T_PROTOCOL")
+@Table(name = "T_PROTOCOL")
 public class Protocol implements Serializable {
+    private static final long serialVersionUID = -2084430251450537369L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Size(max = 32)

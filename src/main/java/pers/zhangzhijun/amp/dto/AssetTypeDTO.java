@@ -10,6 +10,8 @@ import java.io.Serializable;
  * Since    : v1.0.0
  */
 public class AssetTypeDTO implements Serializable {
+    private static final long serialVersionUID = -5859344562293706951L;
+
     private Long id;
 
     private String name;

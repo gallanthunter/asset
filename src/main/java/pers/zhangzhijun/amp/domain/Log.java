@@ -14,7 +14,9 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "T_LOG")
-public class Log implements Serializable{
+public class Log implements Serializable {
+    private static final long serialVersionUID = -1194471955215992120L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)

@@ -7,7 +7,7 @@ package pers.zhangzhijun.amp.exception;
  * Date     : 2016/1/10 20:14
  * Since    : v1.0.0
  */
-public interface IExceptionEnum {
+public interface IException {
     public String getErrorCode();
     public String getErrorDesc();
 }

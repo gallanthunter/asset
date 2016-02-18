@@ -10,6 +10,8 @@ import java.io.Serializable;
  * Since    : v1.0.0
  */
 public class ProjectgroupDTO implements Serializable {
+    private static final long serialVersionUID = -2091493542537339340L;
+
     private String id;
 
     private String name;

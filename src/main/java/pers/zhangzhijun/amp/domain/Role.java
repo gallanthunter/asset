@@ -12,6 +12,8 @@ import java.io.Serializable;
 @Table(name = "T_ROLE")
 public class Role implements Serializable {
 
+    private static final long serialVersionUID = -3428799274275596546L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")

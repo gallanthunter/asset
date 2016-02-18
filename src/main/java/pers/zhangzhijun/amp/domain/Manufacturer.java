@@ -13,7 +13,9 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "T_MANUFACTURER")
-public class Manufacturer implements Serializable{
+public class Manufacturer implements Serializable {
+    private static final long serialVersionUID = -8945659870654267938L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
