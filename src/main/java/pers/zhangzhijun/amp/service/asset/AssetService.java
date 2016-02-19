@@ -37,8 +37,8 @@ public class AssetService {
             throw new ServiceException(ExceptionEnum.ASSET_ALREADY_EXIST);
         }
 
-        if (assetRepository.findByAssetId(assetDTO.getAssetId()) != null){
-            LOGGER.error("The assetid {} already used!",assetDTO.getAssetId());
+        if (assetRepository.findByAssetId(assetDTO.getAssetId()) != null) {
+            LOGGER.error("The assetid {} already used!", assetDTO.getAssetId());
             throw new ServiceException(ExceptionEnum.ASSET_ID_ALREADY_USED);
         }
         assetDTO.setAssetId(GeneratorUUID.getUUID());
