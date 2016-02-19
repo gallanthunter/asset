@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import pers.zhangzhijun.amp.dto.AssetDTO;
 import pers.zhangzhijun.amp.service.asset.AssetService;
 
+import javax.validation.Valid;
+
 /**
  * Created by Zhang Zhijun on 2015/8/22.
  */
@@ -27,7 +29,7 @@ public class AssetResources {
             headers = MediaType.APPLICATION_JSON_VALUE
     )
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ResponseEntity<AssetDTO> create(@RequestBody AssetDTO assetDTO) {
+    public ResponseEntity<AssetDTO> create(@Valid @RequestBody AssetDTO assetDTO) {
         assetService.create(assetDTO);
         return new ResponseEntity<AssetDTO>(assetDTO, HttpStatus.CREATED);
     }
@@ -60,7 +62,7 @@ public class AssetResources {
     }
 
     @RequestMapping(value = "/delete/{assetId}",
-            method = RequestMethod.POST,
+            method = RequestMethod.DELETE,
             headers = MediaType.APPLICATION_JSON_VALUE
     )
     @PreAuthorize("hasRole('ROLE_ADMIN')")

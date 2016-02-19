@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class AssetDTO implements Serializable {
     private static final long serialVersionUID = -6144411411532267090L;
 
-    private String id;
+    private Long id;
 
     private String assetId;
 
@@ -31,11 +31,11 @@ public class AssetDTO implements Serializable {
     public AssetDTO() {
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

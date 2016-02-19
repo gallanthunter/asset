@@ -12,6 +12,7 @@ public enum ExceptionEnum implements IException {
     // Asset exception 100001 ~ 199999
     ASSET_NOT_EXIST("100001", "Asset not exist."),
     ASSET_ALREADY_EXIST("100002", "Asset already exist."),
+    ASSET_ID_ALREADY_USED("100003","AssetId already used."),
 
     // User exception 200000 ~ 299999
     USER_NOT_EXIST("200000", "User not exist."),

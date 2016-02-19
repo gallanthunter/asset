@@ -4,8 +4,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pers.zhangzhijun.amp.domain.Asset;
 import pers.zhangzhijun.amp.dto.AssetDTO;
+import pers.zhangzhijun.amp.exception.ExceptionEnum;
+import pers.zhangzhijun.amp.exception.ServiceException;
 import pers.zhangzhijun.amp.repository.AssetRepository;
 import pers.zhangzhijun.amp.repository.SubscriptionRepository;
 import pers.zhangzhijun.amp.util.GeneratorUUID;
@@ -17,8 +20,9 @@ import java.util.List;
  * Created by ZhangZhijun on 2015/8/30.
  */
 @Service
+@Transactional
 public class AssetService {
-    private Logger logger = LoggerFactory.getLogger(AssetService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AssetService.class);
 
     @Autowired
     AssetRepository assetRepository;
@@ -26,27 +30,32 @@ public class AssetService {
     @Autowired
     SubscriptionRepository subscriptionRepository;
 
-    public void create(AssetDTO assetDTO) {
+    public void create(AssetDTO assetDTO) throws ServiceException {
         Asset asset = new Asset();
-        if (assetRepository.findByAssetId(assetDTO.getAssetId()) != null) {
-            logger.debug("the assetid {} already exist!", assetDTO.getAssetId());
+        if (assetRepository.findById(assetDTO.getId()) != null) {
+            LOGGER.error("the asset {} already exist!", assetDTO.getId());
+            throw new ServiceException(ExceptionEnum.ASSET_ALREADY_EXIST);
         }
-        if (assetDTO.getAssetId() == null) {
-            assetDTO.setAssetId(GeneratorUUID.getUUID());
+
+        if (assetRepository.findByAssetId(assetDTO.getAssetId()) != null){
+            LOGGER.error("The assetid {} already used!",assetDTO.getAssetId());
+            throw new ServiceException(ExceptionEnum.ASSET_ID_ALREADY_USED);
         }
+        assetDTO.setAssetId(GeneratorUUID.getUUID());
+
         asset = covertAssetDTOToAsset(assetDTO);
         assetRepository.save(asset);
-        logger.debug("create asset: {} successful!", assetDTO.toString());
+        LOGGER.debug("create asset: {} successful!", assetDTO.toString());
     }
 
     public void update(AssetDTO assetDTO) {
         Asset asset = new Asset();
-        if (assetRepository.findByAssetId(assetDTO.getId()) != null) {
-            logger.debug("The assetId cannot be changed!");
+        if (assetRepository.findById(assetDTO.getId()) != null) {
+            LOGGER.debug("The assetId cannot be changed!");
         }
         asset = covertAssetDTOToAsset(assetDTO);
         assetRepository.save(asset);
-        logger.debug("update asset: {} successful!", assetDTO.toString());
+        LOGGER.debug("update asset: {} successful!", assetDTO.toString());
     }
 
     public List<AssetDTO> getAll() {
@@ -142,15 +151,15 @@ public class AssetService {
         asset = assetRepository.findByAssetId(assetID);
 
         if (asset == null) {
-            logger.debug("Asset not exist!");
+            LOGGER.debug("Asset not exist!");
         }
 
         if (subscriptionRepository.findByAid(assetID) != null) {
-            logger.debug("Asset {} is associated with User!", asset.toString());
+            LOGGER.debug("Asset {} is associated with User!", asset.toString());
         }
 
         assetRepository.delete(asset);
-        logger.debug("Delete asset {} successfully!", asset.toString());
+        LOGGER.debug("Delete asset {} successfully!", asset.toString());
     }
 
     public Asset covertAssetDTOToAsset(AssetDTO assetDTO) {

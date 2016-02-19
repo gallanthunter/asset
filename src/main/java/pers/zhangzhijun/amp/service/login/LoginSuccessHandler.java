@@ -1,4 +1,4 @@
-package pers.zhangzhijun.amp.login;
+package pers.zhangzhijun.amp.service.login;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

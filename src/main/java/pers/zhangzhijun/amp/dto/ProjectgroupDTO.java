@@ -12,17 +12,17 @@ import java.io.Serializable;
 public class ProjectgroupDTO implements Serializable {
     private static final long serialVersionUID = -2091493542537339340L;
 
-    private String id;
+    private Long id;
 
     private String name;
 
     private String description;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

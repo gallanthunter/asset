@@ -17,7 +17,7 @@ public class Asset implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Size(max = 32)
     @Column(name = "id", nullable = false)
-    private String id;
+    private Long id;
 
     @Size(max = 16)
     @Column(name = "asset_id", nullable = false)
@@ -52,11 +52,11 @@ public class Asset implements Serializable {
     @Column(name = "asset_description")
     private String description;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -16,6 +16,9 @@ import java.util.List;
 public interface AssetRepository extends CrudRepository<Asset, Long> {
     List<Asset> findAll();
 
+    @Query(value = "select a from Asset a where a.id = ?1")
+    Asset findById(Long id);
+
     @Query("select a from Asset a where a.assetId = ?1")
     Asset findByAssetId(String assetId);
 

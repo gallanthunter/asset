@@ -12,27 +12,27 @@ import java.io.Serializable;
 public class LogDTO implements Serializable {
     private static final long serialVersionUID = 1427229055261554211L;
 
-    private String id;
+    private Long id;
 
-    private String date;
+    private Date date;
 
     private String operator;
 
     private String content;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
