@@ -1,6 +1,7 @@
 package pers.zhangzhijun.amp.dto;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * ClassName: pers.zhangzhijun.amp.dto

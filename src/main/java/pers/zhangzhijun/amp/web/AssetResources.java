@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pers.zhangzhijun.amp.dto.AssetDTO;
+import pers.zhangzhijun.amp.exception.ServiceException;
+import pers.zhangzhijun.amp.service.UrlMap;
 import pers.zhangzhijun.amp.service.asset.AssetService;
 
 import javax.validation.Valid;
@@ -17,24 +19,23 @@ import javax.validation.Valid;
  * Created by Zhang Zhijun on 2015/8/22.
  */
 @RestController
-@RequestMapping("/asset")
 public class AssetResources {
     private static Logger logger = LoggerFactory.getLogger(AssetResources.class);
 
     @Autowired
     AssetService assetService;
 
-    @RequestMapping(value = "/create",
+    @RequestMapping(value = UrlMap.URL_ASSET_CREATE,
             method = RequestMethod.POST,
             headers = MediaType.APPLICATION_JSON_VALUE
     )
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ResponseEntity<AssetDTO> create(@Valid @RequestBody AssetDTO assetDTO) {
+    public ResponseEntity<AssetDTO> create(@Valid @RequestBody AssetDTO assetDTO) throws ServiceException {
         assetService.create(assetDTO);
         return new ResponseEntity<AssetDTO>(assetDTO, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/update",
+    @RequestMapping(value = UrlMap.URL_ASSET_UPDATE,
             method = RequestMethod.POST,
             headers = MediaType.APPLICATION_JSON_VALUE
     )
@@ -53,7 +54,7 @@ public class AssetResources {
     //}
 
 
-    @RequestMapping(value = "/list/{assetId}",
+    @RequestMapping(value = UrlMap.URL_ASSET_LIST_BY_ASSETID,
             method = RequestMethod.GET,
             headers = MediaType.APPLICATION_JSON_VALUE
     )
@@ -61,7 +62,7 @@ public class AssetResources {
         return new ResponseEntity<AssetDTO>(assetService.getByAssetId(assetId), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/delete/{assetId}",
+    @RequestMapping(value = UrlMap.URL_ASSET_DELETE_BY_ID,
             method = RequestMethod.DELETE,
             headers = MediaType.APPLICATION_JSON_VALUE
     )

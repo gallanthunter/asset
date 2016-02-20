@@ -198,7 +198,7 @@
             <url>http://repo.spring.io/milestone</url>
         </pluginRepository>
     </pluginRepositories>
-    
+
     <distributionManagement>
 
     </distributionManagement>
