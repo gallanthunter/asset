@@ -11,7 +11,7 @@ public class ServiceException extends BaseException {
     private static final long serialVersionUID = 5265492358802512550L;
     private static final Logger LOGGER = LoggerFactory.getLogger(ServiceException.class);
 
-    public ServiceException(ExceptionEnum exceptionEnum) {
-        super(exceptionEnum);
+    public ServiceException(IException iexception) {
+        super(iexception);
     }
 }

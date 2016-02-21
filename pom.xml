@@ -17,6 +17,8 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <tomcat.version>9.0.0.M3</tomcat.version>
+        <spring.version>4.2.2.RELEASE</spring.version>
         <!--<springframework.version>4.1.7</springframework.version>-->
         <postgresql.version>9.4-1202-jdbc41</postgresql.version>
         <!-- Add for LLT -->
@@ -40,6 +42,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
         <dependency>
@@ -53,8 +59,13 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-webmvc</artifactId>-->
+            <!--<version>${spring.version}</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>

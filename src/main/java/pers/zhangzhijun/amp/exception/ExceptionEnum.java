@@ -21,11 +21,13 @@ public enum ExceptionEnum implements IException {
     ASSET_ASSETID_ALREADY_USED("100009", "Asset assetid already used."),
     ASSET_STATUS_IS_ABNORMAL("100010", "Asset status is abnormal."),
     ASSET_ALREADY_SUBSCRIBER("100011", "asset already subscriber."),
+    ASSET_SUBSCRIBED_BY_USER("100012", "Asset subscribed by user."),
 
     // User exception 200000 ~ 299999
     USER_NOT_EXIST("200001", "User not exist."),
     USER_ALREADY_EXIST("200002", "User already exist."),
-    USER_HAS_NO_RIGHT("200003", "User has no right."),;
+    USER_HAS_NO_RIGHT("200003", "User has no right."),
+    USER_HAS_ASSETS_UNSUBSCRIBE("200004", "User has assets un subscribe."),;
 
     private String errorCode;
     private String errorDesc;

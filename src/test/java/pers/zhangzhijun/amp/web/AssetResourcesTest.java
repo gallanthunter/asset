@@ -104,7 +104,7 @@ public class AssetResourcesTest {
     public void testCreate() throws Exception {
         assertThat(assetRepository.findAll().size() == 0);
         ResultActions resultActions = restMockMvc.perform(post(CREATE_ASSET_URL)
-                .accept(MediaType.APPLICATION_JSON_UTF8)
+                .accept(MediaType.APPLICATION_JSON_VALUE)
                 //.contentType(MediaType.APPLICATION_JSON_UTF8)
                 .content(toByteArray(assetDTO))
         );

@@ -48,10 +48,11 @@ public class AssetService {
         LOGGER.debug("create asset: {} successful!", assetDTO.toString());
     }
 
-    public void update(AssetDTO assetDTO) {
+    public void update(AssetDTO assetDTO) throws ServiceException {
         Asset asset = new Asset();
-        if (assetRepository.findById(assetDTO.getId()) != null) {
-            LOGGER.debug("The assetId cannot be changed!");
+        if (assetRepository.findById(assetDTO.getId()) == null) {
+            LOGGER.debug("The asset not exist.");
+            throw new ServiceException(ExceptionEnum.ASSET_NOT_EXIST);
         }
         asset = covertAssetDTOToAsset(assetDTO);
         assetRepository.save(asset);
@@ -145,17 +146,19 @@ public class AssetService {
         return assetDTOList;
     }
 
-    public void delete(String assetID) {
+    public void delete(String assetID) throws ServiceException {
         Asset asset = new Asset();
 
         asset = assetRepository.findByAssetId(assetID);
 
         if (asset == null) {
             LOGGER.debug("Asset not exist!");
+            throw new ServiceException(ExceptionEnum.ASSET_NOT_EXIST);
         }
 
         if (subscriptionRepository.findByAid(assetID) != null) {
             LOGGER.debug("Asset {} is associated with User!", asset.toString());
+            throw new ServiceException(ExceptionEnum.ASSET_SUBSCRIBED_BY_USER);
         }
 
         assetRepository.delete(asset);
