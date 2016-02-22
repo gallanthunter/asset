@@ -37,7 +37,7 @@ public class AssetResources {
 
     @RequestMapping(value = UrlMap.URL_ASSET_UPDATE,
             method = RequestMethod.POST,
-            headers = MediaType.APPLICATION_JSON_VALUE
+            produces = MediaType.APPLICATION_JSON_VALUE
     )
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<AssetDTO> update(AssetDTO assetDTO) throws ServiceException {
@@ -56,7 +56,7 @@ public class AssetResources {
 
     @RequestMapping(value = UrlMap.URL_ASSET_LIST_BY_ASSETID,
             method = RequestMethod.GET,
-            headers = MediaType.APPLICATION_JSON_VALUE
+            produces = MediaType.APPLICATION_JSON_VALUE
     )
     public ResponseEntity<AssetDTO> getByAssetId(@PathVariable String assetId) {
         return new ResponseEntity<AssetDTO>(assetService.getByAssetId(assetId), HttpStatus.OK);
@@ -64,7 +64,7 @@ public class AssetResources {
 
     @RequestMapping(value = UrlMap.URL_ASSET_DELETE_BY_ID,
             method = RequestMethod.DELETE,
-            headers = MediaType.APPLICATION_JSON_VALUE
+            produces = MediaType.APPLICATION_JSON_VALUE
     )
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public HttpStatus delete(@PathVariable String assetId) throws ServiceException {

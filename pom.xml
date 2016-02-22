@@ -17,8 +17,6 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <tomcat.version>9.0.0.M3</tomcat.version>
-        <!--<springframework.version>4.1.7</springframework.version>-->
         <postgresql.version>9.4-1202-jdbc41</postgresql.version>
         <!-- Add for LLT -->
         <junit.version>4.12</junit.version>
@@ -89,12 +87,12 @@
             <version>${assertJ.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.jayway.jsonpath</groupId>
-            <artifactId>json-path</artifactId>
-            <version>${json-path.version}</version>
-            <scope>test</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.jayway.jsonpath</groupId>-->
+            <!--<artifactId>json-path</artifactId>-->
+            <!--<version>${json-path.version}</version>-->
+            <!--<scope>test</scope>-->
+        <!--</dependency>-->
     </dependencies>
 
     <!-- 构建过程的设置 -->

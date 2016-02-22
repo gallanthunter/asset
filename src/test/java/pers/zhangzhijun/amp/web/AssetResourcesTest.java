@@ -25,17 +25,17 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 import pers.zhangzhijun.amp.Application;
+import pers.zhangzhijun.amp.domain.Asset;
 import pers.zhangzhijun.amp.domain.AssetStatus;
 import pers.zhangzhijun.amp.dto.AssetDTO;
 import pers.zhangzhijun.amp.repository.AssetRepository;
 import pers.zhangzhijun.amp.service.asset.AssetService;
+import pers.zhangzhijun.amp.util.DataConvert;
 
 import javax.annotation.PostConstruct;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static pers.zhangzhijun.amp.util.DateConvert.toByteArray;
 
 /**
  * Created by ZhangZhijun on 2015/9/4.
@@ -57,7 +57,7 @@ import static pers.zhangzhijun.amp.util.DateConvert.toByteArray;
 @ActiveProfiles("test")
 public class AssetResourcesTest {
 
-    public static String BASE_URL ="/asset";
+    public static String BASE_URL = "/asset";
     public static String CREATE_ASSET_URL = BASE_URL + "/create";
 
     @Autowired
@@ -87,12 +87,14 @@ public class AssetResourcesTest {
         if (assetDTO == null) {
             assetDTO = new AssetDTO();
         }
-        assetDTO.setName("水滴传感器");
-        assetDTO.setManufacturerId("1");
+        assetDTO.setName("water sensor");
         assetDTO.setModel("WL-123");
-        assetDTO.setProtocolId("Zigbbe");
         assetDTO.setTypeId("1");
+        assetDTO.setProtocolId("Zigbbe");
         assetDTO.setStatus(AssetStatus.ABNORMAL);
+        assetDTO.setManufacturerId("1");
+        assetDTO.setDescription("this is a water sensor.");
+
     }
 
     @After
@@ -104,16 +106,17 @@ public class AssetResourcesTest {
     public void testCreate() throws Exception {
         assertThat(assetRepository.findAll().size() == 0);
         ResultActions resultActions = restMockMvc.perform(post(CREATE_ASSET_URL)
-                .accept(MediaType.APPLICATION_JSON_VALUE)
-                //.contentType(MediaType.APPLICATION_JSON_UTF8)
-                .content(toByteArray(assetDTO))
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .content(DataConvert.convertObjectToJson(assetDTO))
         );
         System.out.println("Request message: " + resultActions.andReturn().getRequest().getRequestURL().toString());
         System.out.println("Response message: " + resultActions.andReturn().getResponse().getContentAsString());
 
-        resultActions.andExpect(status().isCreated())
-                //.andExpect(jsonPath("$.name"))
-        ;
+        assertThat(assetRepository.findAll().size() == 1);
+
+        for (Asset asset : assetRepository.findAll()) {
+            System.out.println(asset.toString());
+        }
 
 
     }

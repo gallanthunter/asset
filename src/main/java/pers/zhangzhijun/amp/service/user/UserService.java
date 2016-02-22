@@ -3,6 +3,7 @@ package pers.zhangzhijun.amp.service.user;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import pers.zhangzhijun.amp.domain.User;
 import pers.zhangzhijun.amp.dto.UserDTO;
 import pers.zhangzhijun.amp.exception.ExceptionEnum;
@@ -16,6 +17,7 @@ import pers.zhangzhijun.amp.repository.UserRepository;
  * Date     : 22:16
  * Since    : v1.0.0
  */
+@Service
 public class UserService {
     private Logger logger = LoggerFactory.getLogger(UserService.class);
 

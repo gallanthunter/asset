@@ -1,5 +1,7 @@
 package pers.zhangzhijun.amp.domain;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -14,20 +16,20 @@ public class Asset implements Serializable {
     private static final long serialVersionUID = -3016416569594316177L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Size(max = 32)
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name = "id", nullable = false)
-    private Long id;
+    private String id;
 
-    @Size(max = 16)
-    @Column(name = "asset_id", nullable = false)
+    //@Size(max = 16)
+    @Column(name = "asset_id")
     private String assetId;
 
-    @Size(max = 32)
+    @Size(max = 64)
     @Column(name = "asset_name", nullable = false)
     private String name;
 
-    @Size(max = 32)
+    @Size(max = 64)
     @Column(name = "asset_model", nullable = false)
     private String model;
 
@@ -39,12 +41,11 @@ public class Asset implements Serializable {
     @Column(name = "asset_protocol_id", nullable = false)
     private String protocolId;
 
-    @Size(max = 16)
     @Column(name = "asset_status", nullable = false)
     @Enumerated(EnumType.STRING)
     private AssetStatus status = AssetStatus.NORMAL;
 
-    @Size(max = 64)
+    @Size(max = 32)
     @Column(name = "asset_manufacturer_id", nullable = false)
     private String manufacturerId;
 
@@ -52,11 +53,11 @@ public class Asset implements Serializable {
     @Column(name = "asset_description")
     private String description;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
